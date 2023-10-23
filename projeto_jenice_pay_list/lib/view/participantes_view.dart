@@ -36,18 +36,21 @@ class _ParticipantesViewState extends State<ParticipantesView> {
                   border: OutlineInputBorder(),
                 ),
               ),
-              ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      leading: const Icon(Icons.person_2_sharp),
-                      title: Text(tabela[index].nome),
-                      trailing: const Icon(Icons.edit),
-                    );
-                  },
-                  padding: const EdgeInsets.all(16),
-                  separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length),
+              SizedBox(
+                height: 600,
+                child: ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ListTile(
+                        leading: const Icon(Icons.person_2_sharp),
+                        title: Text(tabela[index].nome),
+                        trailing: const Icon(Icons.edit),
+                      );
+                    },
+                    padding: const EdgeInsets.all(16),
+                    separatorBuilder: (_, __) => const Divider(),
+                    itemCount: tabela.length),
+              ),
             ],
           ),
         ));

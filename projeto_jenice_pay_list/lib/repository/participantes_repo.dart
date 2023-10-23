@@ -9,6 +9,10 @@ class PessoaRepo {
     Pessoa(nome: 'Paulo Paga Ninguém'),
     Pessoa(nome: 'Pedro Viaduto'),
     Pessoa(nome: 'Mariana Cheirosa'),
-    Pessoa(nome: 'Testa Lambida')
+    Pessoa(nome: 'Testa Lambida'),
+    Pessoa(nome: 'Madruga'),
+    Pessoa(nome: 'Ghuilherme'),
+    Pessoa(nome: 'Izabela'),
+    Pessoa(nome: 'Gabriel'),
   ];
 }
