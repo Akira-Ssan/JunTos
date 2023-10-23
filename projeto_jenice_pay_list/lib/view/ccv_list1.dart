@@ -1,0 +1,173 @@
+import 'package:flutter/material.dart';
+
+class UserCard extends StatefulWidget {
+  //final int typelist;
+
+  const UserCard({
+    super.key,
+    /*required this.typelist*/
+  });
+
+  @override
+  State<UserCard> createState() => _UserCardState();
+}
+
+class _UserCardState extends State<UserCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ListView(
+        children: const [
+          SizedBox(
+            width: 300,
+            height: 300,
+            child: Card(
+              child: Text("Card 1"),
+            ),
+          ),
+          Card(
+            child: Icon(Icons.access_alarm),
+          ),
+          Card(
+            child: Row(
+              children: [
+                Icon(Icons.home),
+                Text("Card 3"),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class UserCard2 extends StatefulWidget {
+  final String titulo;
+  final String subtitulo;
+
+  const UserCard2({super.key, required this.titulo, required this.subtitulo});
+
+  @override
+  State<UserCard2> createState() => _UserCard2State();
+}
+
+class _UserCard2State extends State<UserCard2> {
+  void exibirAlerta(context) {
+    showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+              title: const Text("Remover Vaquinha"),
+              content:
+                  const Text("Tem certeza que deseja remover essa vaquinha?"),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    //Navigator.pushNamed(context, 'principal');
+                    Navigator.of(ctx).pop();
+                  },
+                  child: Container(
+                    color: const Color.fromARGB(255, 0, 182, 88),
+                    padding: const EdgeInsets.all(14),
+                    child: const Text(
+                      "OK",
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
+                  ),
+                )
+              ],
+            ));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      elevation: 5,
+      margin: const EdgeInsets.all(10),
+      child: ListTile(
+        leading: const FlutterLogo(size: 28),
+        title: Text(
+          widget.titulo,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(widget.subtitulo),
+        trailing: PopupMenuButton(
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (context) => [
+                  PopupMenuItem(
+                    child: ListTile(
+                      leading: const Icon(Icons.edit),
+                      title: const Text('Editar'),
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.popAndPushNamed(
+                            context, 'CompraColetivaNEview');
+                        //Navigator.popAndPushNamed(context, 'NovoEditarVaquinha');
+                      },
+                    ),
+                  ),
+                  PopupMenuItem(
+                    child: ListTile(
+                      leading: const Icon(Icons.delete),
+                      title: const Text('Remover'),
+                      onTap: () {
+                        Navigator.pop(context);
+                        exibirAlerta(context);
+                      },
+                    ),
+                  )
+                ]), //const Icon(Icons.more_vert))),
+      ),
+    );
+  }
+}
+
+class UserCard3 extends StatelessWidget {
+  const UserCard3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      itemBuilder: (BuildContext context, int index) {
+        return Card(
+          child: Text("Card ${index + 1}"),
+        );
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return const Divider();
+      },
+      itemCount: 10,
+    );
+  }
+}
+
+class UserCArd4 extends StatefulWidget {
+  const UserCArd4({super.key});
+
+  @override
+  State<UserCArd4> createState() => _UserCArd4State();
+}
+
+class _UserCArd4State extends State<UserCArd4> {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      itemBuilder: (BuildContext context, int index) {
+        return Card(
+          child: Text("Card ${index + 1}"),
+        );
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return const Divider();
+      },
+      //itemExtent: 100,
+
+      itemCount: 10,
+    );
+  }
+}
