@@ -23,7 +23,7 @@ void main() {
 
         // rotas de navegação
 
-        initialRoute: 'TelaMenu',
+        initialRoute: 'Principal',
         routes: {
           'Principal': (context) => PrincipalView(),
           'Login': (context) => LoginView(),
