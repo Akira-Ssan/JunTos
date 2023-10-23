@@ -19,5 +19,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-  - /media/flebersom/dataOnly/Apps/projeto2/projeto_jenice_pay_list/assets/images/
+    - /media/flebersom/KINGSTON/Apps/projeto2/projeto_jenice_pay_list/assets/images/
+  #- /media/flebersom/dataOnly/Apps/projeto2/projeto_jenice_pay_list/assets/images/
   #- /media/flebersom/dataOnly/Apps/projeto2/projeto_jenice_pay_list/assets/images/fatec.jpeg
