@@ -65,7 +65,9 @@ class TelaMenu extends StatelessWidget {
                   textStyle: const TextStyle(fontSize: 28),
                 ),
                 child: const Text('Gerenciar compra coletiva'),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.popAndPushNamed(context, 'Gerenciar');
+                },
               ),
             ),
             SizedBox(
