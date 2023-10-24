@@ -13,46 +13,47 @@ class PrincipalView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
 
         children: [
-          Icon(
-            Icons.radio_button_checked,
-            color: Colors.blueGrey,
-            size: 120.0,
-          ),
+          Image.asset(
+              '/media/flebersom/KINGSTON/Apps/projeto2/projeto_jenice_pay_list/assets/images/logo1.png'),
 
-          SizedBox(
+          const SizedBox(
             width: double.infinity,
             height: 20,
           ),
 
-          Text('Flutter',
+          Text('JunTos',
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
                 color: Colors.red.shade900,
               )),
           //Text('Calculadora construída com o framework Flutter'),
-          Text('ONONONONONONONONON',
+          const Text('Aplicativo para vaquinha ^\'qp\'^',
               style: TextStyle(
                 fontSize: 20,
                 fontStyle: FontStyle.italic,
               )),
 
-          SizedBox(
+          const SizedBox(
             width: double.infinity,
             height: 40,
           ),
 
           OutlinedButton(
             style: OutlinedButton.styleFrom(
-              backgroundColor: Colors.grey.shade600,
-              foregroundColor: Colors.white,
-              minimumSize: Size(180, 36),
-            ),
+                backgroundColor: const Color.fromARGB(255, 30, 112, 244),
+                foregroundColor: Colors.white,
+                minimumSize: const Size(180, 60),
+
+                // ignore: prefer_const_constructors
+                textStyle: TextStyle(
+                  fontSize: 20,
+                )),
             onPressed: () {
               //navegar para rota
               Navigator.pushNamed(context, 'Login');
             },
-            child: Text('Entrar'),
+            child: const Text('Entrar'),
           ),
 
           /*Image.network('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Pug_dog.jpg/1200px-Pug_dog.jpg',

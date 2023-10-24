@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_jenice_pay_list/view/ccv_list1.dart';
+import 'package:projeto_jenice_pay_list/models/class_utils.dart';
 //import 'package:projeto_jenice_pay_list/view/ccv_list1.dart';
 
 class CompraColetiva extends StatefulWidget {
@@ -39,10 +39,3 @@ class _CompraColetivaState extends State<CompraColetiva> {
     );
   }
 }
-/*
-FloatingActionButton(
-            onPressed: () {},
-            tooltip: localizations.buttonTextCreate,
-            child: const Icon(Icons.add),
-          ),
-          */

@@ -17,6 +17,12 @@ class _ParticipantesViewState extends State<ParticipantesView> {
 
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.popAndPushNamed(context, 'TelaMenu');
+            },
+          ),
           title: const Text('Cadastrar participantes'),
         ),
         body: Padding(
@@ -26,7 +32,7 @@ class _ParticipantesViewState extends State<ParticipantesView> {
             children: [
               TextField(
                 controller: txtNome,
-                obscureText: true,
+                //obscureText: true,
                 style: const TextStyle(
                   fontSize: 22,
                 ),
@@ -42,9 +48,25 @@ class _ParticipantesViewState extends State<ParticipantesView> {
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
                       return ListTile(
-                        leading: const Icon(Icons.person_2_sharp),
+                        leading: IconButton(
+                          icon: const Icon(Icons.remove_circle),
+                          color: Colors.redAccent,
+                          onPressed: () {
+                            Navigator.popAndPushNamed(
+                                context, 'ParticipanteEditar');
+                          },
+                        ),
                         title: Text(tabela[index].nome),
-                        trailing: const Icon(Icons.edit),
+                        trailing: IconButton(
+                          icon: const Icon(
+                            Icons.edit,
+                            color: Colors.greenAccent,
+                          ),
+                          onPressed: () {
+                            Navigator.popAndPushNamed(
+                                context, 'ParticipanteEditar');
+                          },
+                        ),
                       );
                     },
                     padding: const EdgeInsets.all(16),
