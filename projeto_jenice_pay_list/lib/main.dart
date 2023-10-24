@@ -5,6 +5,7 @@ import 'package:projeto_jenice_pay_list/view/compra_coletiva_novo_editar_view.da
 import 'package:projeto_jenice_pay_list/view/esqueci_a_senha_email_input_view.dart';
 import 'package:projeto_jenice_pay_list/view/cadastro_login_view.dart';
 import 'package:projeto_jenice_pay_list/view/gerenciar_compra_coletiva_view.dart';
+import 'package:projeto_jenice_pay_list/view/gerenciar_inserir_pagamento_view.dart';
 import 'package:projeto_jenice_pay_list/view/login_view.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:projeto_jenice_pay_list/view/participante_editar_view.dart';
@@ -38,6 +39,7 @@ void main() {
           'Participantes': (context) => ParticipantesView(),
           'ParticipanteEditar': (context) => ParticipanteEditarView(),
           'Gerenciar': (context) => GerenciarView(),
+          'GerenciarInserirPagamento': (context) => GerenciarPagamento(),
           'Sobre': (context) => SobreView(),
           //'Cadastro':(context) => CadastroLoginView(),
         },

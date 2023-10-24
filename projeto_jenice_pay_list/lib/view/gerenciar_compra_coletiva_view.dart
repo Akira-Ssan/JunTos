@@ -31,11 +31,17 @@ class _GerenciarViewState extends State<GerenciarView> {
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
-                    leading: const Icon(
-                      Icons.monetization_on,
-                      size: 30,
-                      color: Color.fromARGB(255, 41, 153, 47),
-                    ),
+                    leading: IconButton(
+                        icon: const Icon(
+                          Icons.monetization_on,
+                          size: 30,
+                          color: Color.fromARGB(255, 41, 153, 47),
+                        ),
+                        onPressed: () {
+                          Navigator.popAndPushNamed(
+                              context, 'GerenciarInserirPagamento');
+                        }),
+
                     title: Text(tabela[index].nome),
                     // ignore: prefer_const_constructors
                     trailing: Text('R\$ 100,00'),
