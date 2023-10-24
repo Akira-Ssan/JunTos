@@ -12,7 +12,7 @@ class SobreView extends StatelessWidget {
         appBar: AppBar(title: const Text('Sobre')),
         body: Column(
           children: [
-            const SizedBox(height: 10),
+            //const SizedBox(height: 10),
             const WidgetTeste(
                 assetImage:
                     '/media/flebersom/KINGSTON/Apps/projeto2/projeto_jenice_pay_list/assets/images/fatec.png'),
@@ -49,7 +49,7 @@ class SobreView extends StatelessWidget {
                 imageasset: 'assets/images/flebersom_rec.png',
                 titulo: 'Flebersom Bezerra',
                 subtitulo:
-                    'Descente curso ADS, FATECRP\nEstagiário Sênior do projeto JunTos'),
+                    'Discente curso ADS, FATECRP\nEstagiário Sênior do projeto JunTos'),
             const SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(

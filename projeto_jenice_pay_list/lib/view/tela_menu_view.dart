@@ -36,7 +36,7 @@ class TelaMenu extends StatelessWidget {
                   //minimumSize: const Size(60, 60),
                   textStyle: const TextStyle(fontSize: 28),
                 ),
-                child: const Text('Compra coletiva'),
+                child: const Text('Cadastrar vaquinha'),
                 onPressed: () {
                   Navigator.pushNamed(context, 'CompraColetiva');
                 },
@@ -50,7 +50,7 @@ class TelaMenu extends StatelessWidget {
                   minimumSize: const Size(60, 60),
                   textStyle: const TextStyle(fontSize: 28),
                 ),
-                child: const Text('Participantes'),
+                child: const Text('Cadastrar pessoas'),
                 onPressed: () {
                   Navigator.popAndPushNamed(context, 'Participantes');
                 },
@@ -64,22 +64,10 @@ class TelaMenu extends StatelessWidget {
                   minimumSize: const Size(60, 60),
                   textStyle: const TextStyle(fontSize: 28),
                 ),
-                child: const Text('Gerenciar compra coletiva'),
+                child: const Text('Gerenciar vaquinha'),
                 onPressed: () {
                   Navigator.popAndPushNamed(context, 'Gerenciar');
                 },
-              ),
-            ),
-            SizedBox(
-              width: 280,
-              height: 60,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(60, 60),
-                  textStyle: const TextStyle(fontSize: 28),
-                ),
-                child: const Text('Visualizar status'),
-                onPressed: () {},
               ),
             ),
             SizedBox(
