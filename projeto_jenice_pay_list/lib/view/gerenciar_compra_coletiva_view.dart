@@ -24,7 +24,8 @@ class _GerenciarViewState extends State<GerenciarView> {
           const UserCard2(
               titulo: 'A galinha do flutter',
               subtitulo:
-                  'A compra de uma galinha de pelúcia, a mascote do flutter para dar de presente para o professosr Plotze.'),
+                  'A compra de uma galinha de pelúcia, a mascote do flutter para dar de presente para o professosr Plotze.',
+              valor: 3000.0),
           SizedBox(
             height: 600,
             child: ListView.separated(

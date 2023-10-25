@@ -23,10 +23,21 @@ class _CompraColetivaState extends State<CompraColetiva> {
         ),
         title: const Text('Lista de compra coletiva'),
       ),
-      body: const UserCard2(
-        titulo: 'Galinha do Flutter',
-        subtitulo:
-            'Vaquinha para comprar o mascote do flutter uma galinha de pelúcia',
+      body: const Column(
+        children: [
+          UserCard2(
+            titulo: 'Galinha do Flutter',
+            subtitulo:
+                'Vaquinha para comprar o mascote do flutter uma galinha de pelúcia',
+            valor: 3000.0,
+          ),
+          UserCard2(
+            titulo: 'Urso Pelúcia',
+            subtitulo:
+                'Vaquinha para comprar um urso de pelúcia grande e macio para Jenice',
+            valor: 600.0,
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
