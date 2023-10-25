@@ -84,6 +84,7 @@ class TelaMenu extends StatelessWidget {
                 },
               ),
             ),
+            /*
             SizedBox(
               width: 280,
               height: 60,
@@ -97,10 +98,10 @@ class TelaMenu extends StatelessWidget {
                   closeAppUsingSystemPop();
                 },
               ),
-            ),
+            ),*/
             const SizedBox(
               width: 1,
-              height: 1,
+              height: 80,
             ),
           ],
         ),
