@@ -14,7 +14,7 @@ class _CardGerenciaState extends State<CardGerencia> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(1.0),
           child: Center(
             child: Card(
               elevation: 5,

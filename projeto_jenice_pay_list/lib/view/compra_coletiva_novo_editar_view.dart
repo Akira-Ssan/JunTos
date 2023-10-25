@@ -16,6 +16,13 @@ class _CompraColetivaNVviewState extends State<CompraColetivaNVview> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          //tooltip: 'Voltar ao menu',
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.popAndPushNamed(context, 'TelaMenu');
+          },
+        ),
         title: const Text('Nova vaquinha / Editar'),
       ),
       body: Padding(

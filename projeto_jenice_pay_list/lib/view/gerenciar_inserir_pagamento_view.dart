@@ -13,6 +13,13 @@ class _GerenciarPagamentoState extends State<GerenciarPagamento> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          //tooltip: 'Voltar ao menu',
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.popAndPushNamed(context, 'Gerenciar');
+          },
+        ),
         title: const Text('Inserir pagamento: \$Participante'),
       ),
       body: const CardGerencia(),

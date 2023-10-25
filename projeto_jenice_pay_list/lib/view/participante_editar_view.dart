@@ -14,6 +14,13 @@ class _ParticipanteEditarViewState extends State<ParticipanteEditarView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          tooltip: 'Voltar ao menu',
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.popAndPushNamed(context, 'Participantes');
+          },
+        ),
         title: const Text('Editar nome \$participante'),
       ),
       body: Padding(
