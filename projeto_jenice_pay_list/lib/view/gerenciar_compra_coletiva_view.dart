@@ -47,7 +47,7 @@ class _GerenciarViewState extends State<GerenciarView> {
                               context, 'GerenciarInserirPagamento');
                         }),
 
-                    title: Text(tabela[index].nome),
+                    title: Text('${index + 1}. ${tabela[index].nome}'),
                     // ignore: prefer_const_constructors
                     trailing: Text('R\$ 100,00'),
                   );

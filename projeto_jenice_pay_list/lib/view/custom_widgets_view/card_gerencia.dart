@@ -26,7 +26,7 @@ class _CardGerenciaState extends State<CardGerencia> {
                   ),
                   Divider(),
                   Text(
-                    'R\$ 2.500,00 (83,33%)',
+                    'R\$ 1.200,00 (40,00%)',
                     style: TextStyle(
                         fontSize: 22,
                         color: Colors.green,
@@ -57,7 +57,7 @@ class _CardGerenciaState extends State<CardGerencia> {
                         children: [
                           Text('Participantes'),
                           Divider(),
-                          Text('30 pessoas')
+                          Text('12 pessoas')
                         ],
                       ),
                       Column(
