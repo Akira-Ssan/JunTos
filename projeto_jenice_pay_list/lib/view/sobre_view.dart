@@ -36,21 +36,22 @@ class SobreView extends StatelessWidget {
           const SizedBox(height: 25),
           const DevsCard(
               imageasset: 'assets/images/rodrigo_plotze_professor_rec.png',
-              titulo: 'Rodrigo Plotze',
+              titulo: 'Rodrigo Plotze | Professor | Pesquisador',
               subtitulo:
-                  'Docente curso ADS, FATECRP\nTech Lead do projeto JunTos'),
+                  'Docente curso ADS, FATECRP\nTech Lead do projeto JunTos\nrodrigo.plotze@fatec.sp.gov.br'),
           const SizedBox(height: 10),
           const DevsCard(
               imageasset: 'assets/images/jenice_partner_about_rec.png',
-              titulo: 'Jenice Júlio Correia de Lima',
+              titulo:
+                  'Jenice Júlio Correia de Lima | Estudante\njenice.lima@fatec.sp.gov.br',
               subtitulo:
                   'Discente curso ADS, FATECRP\nDev Sênior do projeto JunTos'),
           const SizedBox(height: 10),
           const DevsCard(
               imageasset: 'assets/images/flebersom_rec.png',
-              titulo: 'Flebersom Bezerra',
+              titulo: 'Flebersom Bezerra | Estudante',
               subtitulo:
-                  'Discente curso ADS, FATECRP\nEstagiário Sênior do projeto JunTos'),
+                  'Discente curso ADS, FATECRP\nEstagiário Sênior do projeto JunTos\nflebersom.bezerra@fatec.sp.gov.br'),
           const SizedBox(height: 20),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
