@@ -1,48 +1,5 @@
 import 'package:flutter/material.dart';
 
-class UserCard extends StatefulWidget {
-  //final int typelist;
-
-  const UserCard({
-    super.key,
-    /*required this.typelist*/
-  });
-
-  @override
-  State<UserCard> createState() => _UserCardState();
-}
-
-class _UserCardState extends State<UserCard> {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ListView(
-        children: const [
-          SizedBox(
-            width: 300,
-            height: 300,
-            child: Card(
-              child: Text("Card 1"),
-            ),
-          ),
-          Card(
-            child: Icon(Icons.access_alarm),
-          ),
-          Card(
-            child: Row(
-              children: [
-                Icon(Icons.home),
-                Text("Card 3"),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class UserCard2 extends StatefulWidget {
   final String titulo;
   final String subtitulo;

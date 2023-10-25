@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_jenice_pay_list/models/class_utils.dart';
+import 'package:projeto_jenice_pay_list/view/custom_widgets_view/user_card2.dart';
 //import 'package:projeto_jenice_pay_list/view/ccv_list1.dart';
 
 class CompraColetiva extends StatefulWidget {

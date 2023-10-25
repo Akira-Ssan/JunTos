@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_jenice_pay_list/repository/participantes_repo.dart';
-import 'package:projeto_jenice_pay_list/models/class_utils.dart';
+import 'package:projeto_jenice_pay_list/view/custom_widgets_view/user_card2.dart';
 
 class GerenciarView extends StatefulWidget {
   const GerenciarView({super.key});
