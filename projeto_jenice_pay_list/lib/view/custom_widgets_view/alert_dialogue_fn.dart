@@ -36,17 +36,7 @@ void exibirAlerta(context, String title, String msg, String type,
                     decoration: InputDecoration(
                       labelText: hint,
 
-                      //hintText: 'Entre com o nome',
-                      //border: const OutlineInputBorder(),
-                      //prefixIcon: const Icon(Icons.abc_outlined),
-                      /*suffix: IconButton(
-                        icon: const Icon(Icons.person_add_alt_1),
-                        tooltip: 'Adicionar participante',
-                        onPressed: () {
-                          exibirAlerta(context, 'Adicionar Participante',
-                              'Digite o nome:', 'input_ok');
-                        },
-                      ),*/
+                      
                     ),
                   ),
                   const SizedBox(height: 20),
