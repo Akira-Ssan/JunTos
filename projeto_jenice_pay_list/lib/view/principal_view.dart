@@ -14,7 +14,7 @@ class PrincipalView extends StatelessWidget {
 
         children: [
           Image.asset(
-              '/media/flebersom/KINGSTON/Apps/projeto2/projeto_jenice_pay_list/assets/images/logo1.png'),
+              'assets/images/logo1.png'),
 
           const SizedBox(
             width: double.infinity,

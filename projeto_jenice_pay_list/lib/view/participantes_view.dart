@@ -1,5 +1,32 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        AppBar,
+        BuildContext,
+        Colors,
+        Column,
+        Divider,
+        EdgeInsets,
+        Icon,
+        IconButton,
+        Icons,
+        InputDecoration,
+        ListTile,
+        ListView,
+        MainAxisAlignment,
+        Navigator,
+        OutlineInputBorder,
+        Padding,
+        Scaffold,
+        SizedBox,
+        State,
+        StatefulWidget,
+        Text,
+        TextEditingController,
+        TextField,
+        TextStyle,
+        Widget;
 import 'package:projeto_jenice_pay_list/repository/participantes_repo.dart';
+import 'package:projeto_jenice_pay_list/view/custom_widgets_view/alert_dialogue_fn.dart';
 
 class ParticipantesView extends StatefulWidget {
   const ParticipantesView({super.key});
@@ -13,7 +40,7 @@ final txtNome = TextEditingController();
 class _ParticipantesViewState extends State<ParticipantesView> {
   @override
   Widget build(BuildContext context) {
-    final tabela = PessoaRepo.tabela;
+    var tabela = PessoaRepo.tabela;
 
     return Scaffold(
         appBar: AppBar(
@@ -36,10 +63,16 @@ class _ParticipantesViewState extends State<ParticipantesView> {
                 style: const TextStyle(
                   fontSize: 22,
                 ),
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Nome',
                   hintText: 'Entre com o nome',
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
+                  prefixIcon: const Icon(Icons.abc_outlined),
+                  suffix: IconButton(
+                    icon: const Icon(Icons.person_add_alt_1),
+                    tooltip: 'Adicionar participante',
+                    onPressed: () {},
+                  ),
                 ),
               ),
               SizedBox(
@@ -52,19 +85,22 @@ class _ParticipantesViewState extends State<ParticipantesView> {
                           icon: const Icon(Icons.remove_circle),
                           color: Colors.redAccent,
                           onPressed: () {
-                            Navigator.popAndPushNamed(
-                                context, 'ParticipanteEditar');
+                            exibirAlerta(
+                                context,
+                                'Remover participante',
+                                'Tem certesa que deseja remover o participante?',
+                                'cancel_yes');
                           },
                         ),
                         title: Text(tabela[index].nome),
                         trailing: IconButton(
                           icon: const Icon(
                             Icons.edit,
-                            color: Colors.greenAccent,
+                            color: Colors.indigo,
                           ),
                           onPressed: () {
-                            Navigator.popAndPushNamed(
-                                context, 'ParticipanteEditar');
+                            exibirAlerta(context, 'Editar nome do participante',
+                                'Digite o novo nome:', 'input_ok');
                           },
                         ),
                       );

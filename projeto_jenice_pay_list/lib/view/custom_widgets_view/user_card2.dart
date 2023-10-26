@@ -61,8 +61,11 @@ class _UserCard2State extends State<UserCard2> {
                               title: const Text('Remover'),
                               onTap: () {
                                 Navigator.pop(context);
-                                exibirAlerta(context, 'Remover Vaquinha',
-                                    'Tem certeza que deseja remover essa vaquinha?');
+                                exibirAlerta(
+                                    context,
+                                    'Remover Vaquinha',
+                                    'Tem certeza que deseja remover essa vaquinha?',
+                                    'cancel_yes');
                               },
                             ),
                           )

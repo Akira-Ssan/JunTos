@@ -32,7 +32,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
             valor: 3000.0,
           ),
           UserCard2(
-            titulo: 'Urso Pelúcia',
+            titulo: 'Urso de Pelúcia',
             subtitulo:
                 'Vaquinha para comprar um urso de pelúcia grande e macio para Jenice',
             valor: 600.0,

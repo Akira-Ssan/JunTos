@@ -15,7 +15,7 @@ class SobreView extends StatelessWidget {
         children: [
           const SizedBox(height: 10),
           const LoadImage(assetImage: 'assets/images/fatec.png'),
-
+      
           ///media/flebersom/KINGSTON/Apps/projeto2/projeto_jenice_pay_list/
           const SizedBox(height: 10),
           const Card(

@@ -21,7 +21,7 @@ class _CardGerenciaState extends State<CardGerencia> {
               child: Column(
                 children: [
                   Text(
-                    'A galinha do flutter',
+                    'Galinha do flutter',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                   ),
                   Divider(),
@@ -61,7 +61,7 @@ class _CardGerenciaState extends State<CardGerencia> {
                         ],
                       ),
                       Column(
-                        children: [Text('Cota'), Divider(), Text('R\$ 100,00')],
+                        children: [Text('Cota'), Divider(), Text('R\$ 250,00')],
                       ),
                     ],
                   )

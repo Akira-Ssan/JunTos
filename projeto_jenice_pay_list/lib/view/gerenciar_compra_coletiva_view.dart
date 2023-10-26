@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_jenice_pay_list/repository/participantes_repo.dart';
+import 'package:projeto_jenice_pay_list/view/custom_widgets_view/alert_dialogue_fn.dart';
 import 'package:projeto_jenice_pay_list/view/custom_widgets_view/card_gerencia.dart';
 //import 'package:projeto_jenice_pay_list/view/custom_widgets_view/user_card2.dart';
 
@@ -43,8 +44,9 @@ class _GerenciarViewState extends State<GerenciarView> {
                           color: Color.fromARGB(255, 41, 153, 47),
                         ),
                         onPressed: () {
-                          Navigator.popAndPushNamed(
-                              context, 'GerenciarInserirPagamento');
+                          exibirAlerta(context, 'Fazer pagamento',
+                              'Digite o valor', 'input_ok',
+                              hint: 'Valor');
                         }),
 
                     title: Text('${index + 1}. ${tabela[index].nome}'),

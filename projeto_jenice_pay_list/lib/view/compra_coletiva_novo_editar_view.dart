@@ -45,14 +45,16 @@ class _CompraColetivaNVviewState extends State<CompraColetivaNVview> {
             ),
             TextField(
               controller: txtSubtitulo,
-              obscureText: true,
+              maxLines: 2,
+              //obscureText: true,
               style: const TextStyle(
-                fontSize: 22,
+                fontSize: 18,
               ),
               decoration: const InputDecoration(
                 labelText: 'Descrição',
                 hintText: 'Uma breve descrição',
                 border: OutlineInputBorder(),
+                //hintMaxLines: 2,
               ),
             ),
             const SizedBox(
@@ -60,15 +62,20 @@ class _CompraColetivaNVviewState extends State<CompraColetivaNVview> {
             ),
             TextField(
               controller: txtValor,
-              obscureText: true,
+
+              //obscureText: true,
               style: const TextStyle(
                 fontSize: 22,
               ),
               decoration: const InputDecoration(
-                labelText: 'Valor',
-                hintText: 'Entre com o valor da vaquinha',
-                border: OutlineInputBorder(),
-              ),
+                  labelText: 'Valor',
+                  hintText: 'Entre com o valor',
+                  border: OutlineInputBorder(),
+                  prefix: Icon(Icons.monetization_on_outlined),
+                  suffix: Text(
+                    'reais',
+                    style: TextStyle(fontSize: 14),
+                  )),
             ),
             const SizedBox(
               height: 30,
