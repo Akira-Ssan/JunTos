@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_jenice_pay_list/view/custom_widgets_view/devs_card.dart';
 import 'package:projeto_jenice_pay_list/view/custom_widgets_view/load_image.dart';
 
-/// Flutter code sample for [Card].
+
 
 class SobreView extends StatelessWidget {
   const SobreView({super.key});
@@ -16,7 +16,7 @@ class SobreView extends StatelessWidget {
           const SizedBox(height: 10),
           const LoadImage(assetImage: 'assets/images/fatec.png'),
       
-          ///media/flebersom/KINGSTON/Apps/projeto2/projeto_jenice_pay_list/
+         
           const SizedBox(height: 10),
           const Card(
             child: Text(
