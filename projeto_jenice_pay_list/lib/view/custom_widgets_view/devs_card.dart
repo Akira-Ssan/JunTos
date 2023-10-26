@@ -1,7 +1,3 @@
-/*
-Algumas classes que retornam widgets personalizados
-
-*/
 
 import 'package:flutter/material.dart';
 
