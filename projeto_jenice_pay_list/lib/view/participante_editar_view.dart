@@ -1,3 +1,4 @@
+// Obsoleto , não está em uso
 import 'package:flutter/material.dart';
 
 class ParticipanteEditarView extends StatefulWidget {
