@@ -16,5 +16,5 @@ participantes; deve processar e exibir informações sobre o andamento da 'vaqui
 até que se atinja a meta estabelcida do valor do objeto.  
 
 O projeto no estado que está serve apenas como um protótipo visual. Abstendo-se assim
-de qualquer responsabilidade funcional.
+de qualquer responsabilidade funcional. ^'qp'^
 
