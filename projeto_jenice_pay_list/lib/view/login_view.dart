@@ -2,10 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-//
-// TELA CALCULADORA
-// Stateful => stf+TAB
-//
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -14,16 +11,11 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  //
-  //TextEditinControler
-  //Objetos responsáveis pela leitura/escrita de valores
-  //nos campos de texto
+
   var txtEmail = TextEditingController();
   var txtPassword = TextEditingController();
 
-  //
-  //método para exibir o resultado do cálculo
-  //
+
 
   void exibirAlerta(context) {
     showDialog(
@@ -70,15 +62,7 @@ class _LoginViewState extends State<LoginView> {
         padding: const EdgeInsets.all(50),
         child: Column(
           children: [
-            /*
-            Image.asset(
-              'assets/image/login.png',
-              width: 60.0,
-              height: 24.0,
-              fit: BoxFit.cover,
-            ),
-            
-            */
+          
             Icon(
               Icons.login_outlined,
               size: 160,
@@ -117,9 +101,7 @@ class _LoginViewState extends State<LoginView> {
                 border: OutlineInputBorder(),
               ),
             ),
-            //
-            //operações
-            //
+         
 
             SizedBox(
               height: 30,
@@ -127,7 +109,7 @@ class _LoginViewState extends State<LoginView> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                //botão entrar
+              
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     minimumSize: Size(60, 60),
@@ -142,26 +124,7 @@ class _LoginViewState extends State<LoginView> {
                     //
                     Navigator.pushNamed(context, 'TelaMenu');
 
-                    /*
-                    setState(() {
-                      
-                      double? v1 = double.tryParse(txtEmail.text);
-                      double? v2 = double.tryParse(txtPassword.text);
-                      
-                      if(v1 != null && v2 != null)
-                      {
-                      double res = v1 + v2;
-                      String resTxt = "Resultado: ";
-                      exibirResultado(context, resTxt + res.toStringAsFixed(2));
-                      }
-                      else
-                      {
-                        exibirAlerta(context);
-                      }
-                       
-                      }
-                    );
-                    */
+                  
                   },
                 ),
               ],
@@ -174,14 +137,7 @@ class _LoginViewState extends State<LoginView> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                /*  GestureDetector(
-            child: Text('Toque aqui'),
-            onTap: () {
-              // Executa uma ação quando o texto é tocado
-              print('O texto foi tocado!');
-            },
-          ),
-          */
+               
                 GestureDetector(
                   child: Text(
                     'Cadastre-se',
@@ -209,19 +165,7 @@ class _LoginViewState extends State<LoginView> {
                   },
                 ),
 
-                /*
-                Text('Esqueci a senha',
-                  
-                  style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue,
-                  decoration: TextDecoration.underline,
-
-                  ),
-                  
-               ),
-               */
+              
               ],
             ),
           ],
