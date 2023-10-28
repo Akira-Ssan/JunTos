@@ -1,8 +1,8 @@
 # Projeto JunTos
 # FATECRP
 
-Professor: Rodrigo Plotz
-Alunos: Flebersom Bezerra, Jenice Júlio.
+# Professor: Rodrigo Plotz
+# Alunos: Flebersom Bezerra, Jenice Júlio.
 
 Projeto desenvolvido na FATEC de Ribeirão Preto, turma da manhã, 4* semestre 
 na matéria eletiva de programação para dispositivos móveis.

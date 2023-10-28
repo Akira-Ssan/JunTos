@@ -27,7 +27,7 @@ class PrincipalView extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: Colors.red.shade900,
               )),
-          //Text('Calculadora construída com o framework Flutter'),
+         
           const Text('Aplicativo para vaquinha ^\'qp\'^',
               style: TextStyle(
                 fontSize: 20,
@@ -45,7 +45,7 @@ class PrincipalView extends StatelessWidget {
                 foregroundColor: Colors.white,
                 minimumSize: const Size(180, 60),
 
-                // ignore: prefer_const_constructors
+                
                 textStyle: TextStyle(
                   fontSize: 20,
                 )),
@@ -56,9 +56,7 @@ class PrincipalView extends StatelessWidget {
             child: const Text('Entrar'),
           ),
 
-          /*Image.network('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Pug_dog.jpg/1200px-Pug_dog.jpg',
-          )
-          */
+         
         ],
       ),
     );

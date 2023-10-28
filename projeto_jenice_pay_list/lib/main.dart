@@ -23,8 +23,7 @@ void main() {
         useInheritedMediaQuery: true,
         debugShowCheckedModeBanner: false,
 
-        //home: CadastroLoginView(),
-
+       
         // rotas de navegação
 
         initialRoute: 'Principal',
@@ -48,7 +47,3 @@ void main() {
   );
 }
 
-//
-// TELA PRINCIPAL
-// Stateless = stl
-//String texto = 'SE-LIGA DOIDÃO', texto1 = 'CUMÉ QUE TÁ CUMPADE';
