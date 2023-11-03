@@ -1,7 +1,7 @@
 # JunTos
-#Projeto feito em Flutter/DART compra coletiva - vaquinha
-# Projeto JunTos
-# FATECRP
+Projeto feito em Flutter/DART compra coletiva - vaquinha
+Projeto JunTos
+FATECRP
 
 # Professor: Rodrigo Plotz
 # Alunos: Flebersom Bezerra, Jenice Júlio.
