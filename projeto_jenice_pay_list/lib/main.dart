@@ -23,7 +23,6 @@ void main() {
         useInheritedMediaQuery: true,
         debugShowCheckedModeBanner: false,
 
-       
         // rotas de navegação
 
         initialRoute: 'Principal',
@@ -34,7 +33,7 @@ void main() {
           'EsqueciSenha': (context) => EsqueciSenhaEmail(),
           'TelaMenu': (context) => TelaMenu(),
           'CompraColetiva': (context) => CompraColetiva(),
-          'CompraColetivaNEview': (context) => CompraColetivaNVview(),
+          //'CompraColetivaNEview': (context) => CompraColetivaNVview(),
           'Participantes': (context) => ParticipantesView(),
           'ParticipanteEditar': (context) => ParticipanteEditarView(),
           'Gerenciar': (context) => GerenciarView(),
@@ -46,4 +45,3 @@ void main() {
     ),
   );
 }
-
