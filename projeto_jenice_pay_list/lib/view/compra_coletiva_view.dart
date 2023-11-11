@@ -10,16 +10,17 @@ class CompraColetiva extends StatefulWidget {
 }
 
 class _CompraColetivaState extends State<CompraColetiva> {
-  final txtTitulo = TextEditingController();
-  final txtSubtitulo = TextEditingController();
-  final txtValor = TextEditingController();
+  var txtTitulo = TextEditingController();
+  var txtSubtitulo = TextEditingController();
+  var txtValor = TextEditingController();
+  var txtNomePaticipante = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     var tabela = PessoaRepo.tabela;
 
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         leading: IconButton(
           //tooltip: 'Voltar ao menu',
           icon: const Icon(Icons.arrow_back),
@@ -28,9 +29,9 @@ class _CompraColetivaState extends State<CompraColetiva> {
           },
         ),
         title: const Text('Nova vaquinha'),
-      ),
+      ),*/
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.fromLTRB(15, 50, 15, 50),
         child: Column(
           children: [
             //
@@ -91,12 +92,36 @@ class _CompraColetivaState extends State<CompraColetiva> {
                   )),
             ),
             const SizedBox(
+              height: 10,
+            ),
+            //
+            //
+            TextField(
+              controller: txtNomePaticipante,
+              //obscureText: true,
+              style: const TextStyle(
+                fontSize: 12,
+              ),
+              decoration: InputDecoration(
+                labelText: 'Nome',
+                hintText: 'Entre com o nome',
+                border: const OutlineInputBorder(),
+                //prefixIcon: const Icon(Icons.person),
+                suffix: IconButton(
+                  icon: const Icon(Icons.person_add_alt_1),
+                  tooltip: 'Adicionar participante',
+                  onPressed: () {},
+                ),
+              ),
+            ),
+
+            const SizedBox(
               height: 15,
             ),
             Column(
               children: [
                 SizedBox(
-                  height: 400,
+                  height: 300,
                   //
                   //Lista participantes add vaquinha
                   //
@@ -105,7 +130,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
                       itemBuilder: (BuildContext context, int index) {
                         return ListTile(
                           leading: IconButton(
-                            icon: const Icon(Icons.remove_circle),
+                            icon: const Icon(Icons.person_remove),
                             color: Colors.redAccent,
                             onPressed: () {
                               //
