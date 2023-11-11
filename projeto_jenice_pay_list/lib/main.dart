@@ -1,4 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+//Firebase imports
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 import 'package:flutter/material.dart';
 //import 'package:projeto_jenice_pay_list/view/compra_coletiva_novo_editar_view.dart';
@@ -15,7 +18,11 @@ import 'package:projeto_jenice_pay_list/view/tela_menu_view.dart';
 import 'package:projeto_jenice_pay_list/view/compra_coletiva_view.dart';
 import 'package:projeto_jenice_pay_list/view/sobre_view.dart';
 
-void main() {
+Future<void> main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(
     DevicePreview(
       enabled: true,
