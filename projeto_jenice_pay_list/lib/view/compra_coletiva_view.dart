@@ -33,10 +33,13 @@ class _CompraColetivaState extends State<CompraColetiva> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
+            //
+            //Textfield Titulo
+            //
             TextField(
               controller: txtTitulo,
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 12,
               ),
               decoration: const InputDecoration(
                 labelText: 'Titulo',
@@ -47,12 +50,15 @@ class _CompraColetivaState extends State<CompraColetiva> {
             const SizedBox(
               height: 10,
             ),
+            //
+            //Textfield Descrição
+            //
             TextField(
               controller: txtSubtitulo,
               maxLines: 2,
               //obscureText: true,
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 12,
               ),
               decoration: const InputDecoration(
                 labelText: 'Descrição',
@@ -64,12 +70,15 @@ class _CompraColetivaState extends State<CompraColetiva> {
             const SizedBox(
               height: 10,
             ),
+            //
+            //Textfield Valor da vaquinha
+            //
             TextField(
               controller: txtValor,
 
               //obscureText: true,
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 12,
               ),
               decoration: const InputDecoration(
                   labelText: 'Valor',
@@ -88,6 +97,9 @@ class _CompraColetivaState extends State<CompraColetiva> {
               children: [
                 SizedBox(
                   height: 400,
+                  //
+                  //Lista participantes add vaquinha
+                  //
                   child: ListView.separated(
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
@@ -96,14 +108,17 @@ class _CompraColetivaState extends State<CompraColetiva> {
                             icon: const Icon(Icons.remove_circle),
                             color: Colors.redAccent,
                             onPressed: () {
+                              //
                               exibirAlerta(
                                   context,
                                   'Remover participante',
                                   'Tem certesa que deseja remover o participante?',
                                   'cancel_yes');
                             },
+                            //
                           ),
-                          title: Text(tabela[index].nome),
+                          title: Text(tabela[index].nome,
+                              style: const TextStyle(fontSize: 12)),
                           trailing: IconButton(
                             icon: const Icon(
                               Icons.edit,
@@ -119,21 +134,26 @@ class _CompraColetivaState extends State<CompraColetiva> {
                           ),
                         );
                       },
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(10),
                       separatorBuilder: (_, __) => const Divider(),
                       itemCount: tabela.length),
                 ),
               ],
             ),
+            //
+            const Divider(),
+            //
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                //botão entrar
+                //
+                //botão voltar
+                //
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
-                    minimumSize: const Size(60, 60),
+                    minimumSize: const Size(45, 45),
                     textStyle: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                     ),
                   ),
                   child: const Text('Voltar'),
@@ -144,11 +164,14 @@ class _CompraColetivaState extends State<CompraColetiva> {
                     Navigator.pushNamed(context, 'CompraColetiva');
                   },
                 ),
+                //
+                //Botão Salvar
+                //
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
-                    minimumSize: const Size(60, 60),
+                    minimumSize: const Size(45, 45),
                     textStyle: const TextStyle(
-                      fontSize: 20,
+                      fontSize: 14,
                     ),
                   ),
                   child: const Text('Salvar'),
