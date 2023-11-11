@@ -1,4 +1,4 @@
-import 'package:projeto_jenice_pay_list/models/participante_model.dart';
+import 'package:projeto_jenice_pay_list/model/participante_model.dart';
 
 class PessoaRepo {
   static List<Pessoa> tabela = [

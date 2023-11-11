@@ -5,7 +5,7 @@ import 'firebase_options.dart';
 
 import 'package:flutter/material.dart';
 //import 'package:projeto_jenice_pay_list/view/compra_coletiva_novo_editar_view.dart';
-import 'package:projeto_jenice_pay_list/view/esqueci_a_senha_email_input_view.dart';
+
 import 'package:projeto_jenice_pay_list/view/cadastro_login_view.dart';
 import 'package:projeto_jenice_pay_list/view/gerenciar_compra_coletiva_view.dart';
 import 'package:projeto_jenice_pay_list/view/gerenciar_inserir_pagamento_view.dart';
@@ -37,7 +37,6 @@ Future<void> main() async {
           'Principal': (context) => PrincipalView(),
           'Login': (context) => LoginView(),
           'Cadastro': (context) => CadastroLoginView(),
-          'EsqueciSenha': (context) => EsqueciSenhaEmail(),
           'TelaMenu': (context) => TelaMenu(),
           'CompraColetiva': (context) => CompraColetiva(),
           //'CompraColetivaNEview': (context) => CompraColetivaNVview(),

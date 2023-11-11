@@ -2,22 +2,15 @@
 
 import 'package:flutter/material.dart';
 
-
 class EsqueciSenhaEmail extends StatefulWidget {
   const EsqueciSenhaEmail({super.key});
 
   @override
   State<EsqueciSenhaEmail> createState() => _EsqueciSenhaEmailState();
- 
 }
 
 class _EsqueciSenhaEmailState extends State<EsqueciSenhaEmail> {
-  
-
   var txtUserEmailRedefine = TextEditingController();
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -25,26 +18,20 @@ class _EsqueciSenhaEmailState extends State<EsqueciSenhaEmail> {
       appBar: AppBar(
         title: Text('Recuperar senha'),
       ),
-      
       body: Padding(
         padding: const EdgeInsets.all(50),
         child: Column(
           children: [
-         
-            
-            Text('Lhe enviaremos um e-mail com um link para você acessar, onde poderá redefinir a sua senha.',
-                  style: TextStyle(
+            Text(
+              "Identifique-se para receber um e-mail com as instruções e o link para criar uma nova senha.",
+              style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Colors.redAccent
-
-                  ),
-               ),
-
-             SizedBox(
+                  color: Colors.redAccent),
+            ),
+            SizedBox(
               height: 20,
             ),
-
             TextField(
               controller: txtUserEmailRedefine,
               style: TextStyle(
@@ -56,17 +43,13 @@ class _EsqueciSenhaEmailState extends State<EsqueciSenhaEmail> {
                 border: OutlineInputBorder(),
               ),
             ),
-      
             SizedBox(
               height: 20,
             ),
-          
             Row(
-          
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              
-                OutlinedButton( 
+                OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     minimumSize: Size(60, 60),
                     textStyle: TextStyle(
@@ -74,22 +57,13 @@ class _EsqueciSenhaEmailState extends State<EsqueciSenhaEmail> {
                     ),
                   ),
                   child: Text('Enviar'),
-                  onPressed: (){
-                  
+                  onPressed: () {
                     Navigator.pushNamed(context, 'Login');
-                    setState(() {
-                     
-                      }
-                      
-                    );
-                  },           
+                    setState(() {});
+                  },
                 ),
-              
-           
               ],
             ),
-
-        
           ],
         ),
       ),
