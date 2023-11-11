@@ -30,9 +30,15 @@ class _CadastroLoginViewState extends State<CadastroLoginView> {
         title: Text('Criar Conta'),
       ),*/
       body: Padding(
-        padding: const EdgeInsets.all(50),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
+            Icon(
+              Icons.account_box,
+              size: 128,
+              color: Colors.blueGrey,
+            ),
+            SizedBox(height: 40),
             TextField(
               controller: txtNome,
               style: TextStyle(
@@ -80,7 +86,7 @@ class _CadastroLoginViewState extends State<CadastroLoginView> {
               height: 30,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 //
                 //botão cancaelar
@@ -89,7 +95,7 @@ class _CadastroLoginViewState extends State<CadastroLoginView> {
                   style: OutlinedButton.styleFrom(
                     minimumSize: Size(60, 60),
                     textStyle: TextStyle(
-                      fontSize: 28,
+                      fontSize: 20,
                     ),
                   ),
                   child: Text('Cancelar'),
@@ -103,7 +109,7 @@ class _CadastroLoginViewState extends State<CadastroLoginView> {
                   style: OutlinedButton.styleFrom(
                     minimumSize: Size(60, 60),
                     textStyle: TextStyle(
-                      fontSize: 28,
+                      fontSize: 20,
                     ),
                   ),
                   child: Text('Salvar'),

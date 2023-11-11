@@ -18,6 +18,7 @@ import 'package:projeto_jenice_pay_list/view/tela_menu_view.dart';
 import 'package:projeto_jenice_pay_list/view/compra_coletiva_view.dart';
 import 'package:projeto_jenice_pay_list/view/sobre_view.dart';
 
+//Firebase inicialização
 Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

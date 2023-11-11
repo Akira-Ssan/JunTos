@@ -58,11 +58,11 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         title: Text('Login'),
-      ),
+      ),*/
       body: Padding(
-        padding: const EdgeInsets.all(50),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             Icon(
@@ -101,29 +101,86 @@ class _LoginViewState extends State<LoginView> {
                 border: OutlineInputBorder(),
               ),
             ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: TextButton(
+                child: Text(
+                  'Esqueci a senha',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline),
+                ),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text("Esqueceu a senha?"),
+                        content: SizedBox(
+                          height: 150,
+                          child: Column(
+                            children: [
+                              Text(
+                                "Identifique-se para receber um e-mail com as instruções e o link para criar uma nova senha.",
+                              ),
+                              SizedBox(height: 25),
+                              TextField(
+                                controller: txtEmailEsqueceuSenha,
+                                decoration: InputDecoration(
+                                  labelText: 'Email',
+                                  prefixIcon: Icon(Icons.email),
+                                  border: OutlineInputBorder(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        actionsPadding: EdgeInsets.all(20),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text('Cancelar'),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              LoginController().esqueceuSenha(
+                                context,
+                                txtEmailEsqueceuSenha.text,
+                              );
+                            },
+                            child: Text('Enviar'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
             SizedBox(
               height: 30,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    minimumSize: Size(60, 60),
-                    textStyle: TextStyle(
-                      fontSize: 28,
-                    ),
+            Center(
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  minimumSize: Size(60, 60),
+                  textStyle: TextStyle(
+                    fontSize: 28,
                   ),
-                  child: Text('Entrar'),
-                  onPressed: () {
-                    LoginController().login(
-                      context,
-                      txtEmail.text,
-                      txtPassw.text,
-                    );
-                  },
                 ),
-              ],
+                child: Text('Entrar'),
+                onPressed: () {
+                  LoginController().login(
+                    context,
+                    txtEmail.text,
+                    txtPassw.text,
+                  );
+                },
+              ),
             ),
             SizedBox(
               height: 40,
@@ -138,7 +195,7 @@ class _LoginViewState extends State<LoginView> {
                   child: Text(
                     'Ainda não tem conta?',
                     style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                         color: Colors.blue,
                         decoration: TextDecoration.underline),
@@ -150,63 +207,6 @@ class _LoginViewState extends State<LoginView> {
                 //
                 // Esqueceu a senha
                 //
-                TextButton(
-                  child: Text(
-                    'Esqueci a senha',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline),
-                  ),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text("Esqueceu a senha?"),
-                          content: Container(
-                            height: 150,
-                            child: Column(
-                              children: [
-                                Text(
-                                  "Identifique-se para receber um e-mail com as instruções e o link para criar uma nova senha.",
-                                ),
-                                SizedBox(height: 25),
-                                TextField(
-                                  controller: txtEmailEsqueceuSenha,
-                                  decoration: InputDecoration(
-                                    labelText: 'Email',
-                                    prefixIcon: Icon(Icons.email),
-                                    border: OutlineInputBorder(),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          actionsPadding: EdgeInsets.all(20),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text('Cancelar'),
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                LoginController().esqueceuSenha(
-                                  context,
-                                  txtEmailEsqueceuSenha.text,
-                                );
-                              },
-                              child: Text('Enviar'),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                ),
               ],
             ),
           ],
