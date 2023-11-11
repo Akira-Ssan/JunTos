@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "460891721947",
+    "project_id": "projeto-vaquinha",
+    "storage_bucket": "projeto-vaquinha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460891721947:android:96a0a6c84472ef09987cfe",
+        "android_client_info": {
+          "package_name": "com.example.projeto_jenice_pay_list"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeEp-1P61Rwv5zDxySXBKggltGCsu2tLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
