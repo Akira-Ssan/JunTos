@@ -10,8 +10,8 @@ import 'package:projeto_jenice_pay_list/view/cadastro_login_view.dart';
 import 'package:projeto_jenice_pay_list/view/gerenciar_compra_coletiva_view.dart';
 import 'package:projeto_jenice_pay_list/view/gerenciar_inserir_pagamento_view.dart';
 import 'package:projeto_jenice_pay_list/view/login_view.dart';
-import 'package:projeto_jenice_pay_list/view/participante_editar_view.dart';
-import 'package:projeto_jenice_pay_list/view/participantes_view.dart';
+//import 'package:projeto_jenice_pay_list/view/participante_editar_view.dart';
+//import 'package:projeto_jenice_pay_list/view/participantes_view.dart';
 import 'package:projeto_jenice_pay_list/view/principal_view.dart';
 import 'package:projeto_jenice_pay_list/view/tela_menu_view.dart';
 import 'package:projeto_jenice_pay_list/view/compra_coletiva_view.dart';
@@ -40,8 +40,8 @@ Future<void> main() async {
           'TelaMenu': (context) => TelaMenu(),
           'CompraColetiva': (context) => CompraColetiva(),
           //'CompraColetivaNEview': (context) => CompraColetivaNVview(),
-          'Participantes': (context) => ParticipantesView(),
-          'ParticipanteEditar': (context) => ParticipanteEditarView(),
+          //'Participantes': (context) => ParticipantesView(),
+          //'ParticipanteEditar': (context) => ParticipanteEditarView(),
           'Gerenciar': (context) => GerenciarView(),
           'GerenciarInserirPagamento': (context) => GerenciarPagamento(),
           'Sobre': (context) => SobreView(),
