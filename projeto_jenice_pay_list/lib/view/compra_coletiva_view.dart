@@ -186,7 +186,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
                     //
                     //Ação ao pressionar o botão +
                     //
-                    Navigator.pushNamed(context, 'CompraColetiva');
+                    Navigator.pop(context);
                   },
                 ),
                 //
@@ -204,7 +204,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
                     //
                     //Ação ao pressionar o botão +
                     //
-                    Navigator.pushNamed(context, 'CompraColetiva');
+                    Navigator.pushNamed(context, 'TelaMenu');
                   },
                 ),
               ],

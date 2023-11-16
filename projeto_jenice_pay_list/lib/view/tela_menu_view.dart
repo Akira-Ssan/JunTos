@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../controller/login_controller.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -12,7 +15,35 @@ class TelaMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Menu'),
+        title: Row(
+          children: [
+            const Expanded(child: Text('Vaquinha')),
+            FutureBuilder<String>(
+              future: LoginController().usuarioLogado(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: TextButton.icon(
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        textStyle: const TextStyle(fontSize: 12),
+                      ),
+                      onPressed: () {
+                        LoginController().logout();
+                        Navigator.pushReplacementNamed(context, 'Login');
+                      },
+                      icon: const Icon(Icons.exit_to_app, size: 18),
+                      label: Text('Olá, ${snapshot.data.toString()}',
+                          style: const TextStyle(fontSize: 18)),
+                    ),
+                  );
+                }
+                return const Text('');
+              },
+            ),
+          ],
+        ),
       ),
       body: //Padding(
           //padding: const EdgeInsets.all(10),
@@ -42,6 +73,7 @@ class TelaMenu extends StatelessWidget {
                 },
               ),
             ),
+            /*
             SizedBox(
               width: 280,
               height: 60,
@@ -56,6 +88,7 @@ class TelaMenu extends StatelessWidget {
                 },
               ),
             ),
+            */
             SizedBox(
               width: 280,
               height: 70,
