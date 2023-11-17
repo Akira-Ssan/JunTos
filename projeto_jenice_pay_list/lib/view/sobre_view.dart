@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:projeto_jenice_pay_list/view/custom_widgets_view/devs_card.dart';
 import 'package:projeto_jenice_pay_list/view/custom_widgets_view/load_image.dart';
 
-
-
 class SobreView extends StatelessWidget {
   const SobreView({super.key});
 
@@ -15,12 +13,12 @@ class SobreView extends StatelessWidget {
         children: [
           const SizedBox(height: 10),
           const LoadImage(assetImage: 'assets/images/fatec.png'),
-      
-         
           const SizedBox(height: 10),
           const Card(
             child: Text(
-                'O projeto de software JunTos visa facilitar a criação e o controle de compras coletivas (vulgarmente conhecido como vaquinha), permitindo que os usuários criem metas/objetivos com valores bem definidos, ficando a cargo do software fazer toda a administração dos pagamentos efetuados pelos participantes.'),
+                '^\'qp\'^\nO software JunTos foi desenvolvido para simplificar a organização e gestão de vaquinhas. Ele possibilita que os usuários estabeleçam metas e objetivos com valores específicos, enquanto a plataforma se encarrega da administração dos pagamentos realizados pelos participantes.',
+                style: TextStyle(fontWeight: FontWeight.normal),
+                textAlign: TextAlign.center),
           ),
           const SizedBox(height: 25),
           const Center(

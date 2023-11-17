@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_jenice_pay_list/model/participante_model.dart';
-import 'package:projeto_jenice_pay_list/view/custom_widgets_view/alert_dialogue_fn.dart';
 
 class CompraColetiva extends StatefulWidget {
   const CompraColetiva({super.key});
@@ -14,7 +13,8 @@ class _CompraColetivaState extends State<CompraColetiva> {
   var txtSubtitulo = TextEditingController();
   var txtValor = TextEditingController();
   var txtNomePaticipante = TextEditingController();
-  var partici = ListaParticipantes();
+  var txtMudaNome = TextEditingController();
+  var lista = ListaParticipantes();
 
   @override
   void initState() {
@@ -131,8 +131,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
                   tooltip: 'Adicionar participante',
                   onPressed: () {
                     setState(() {
-                      partici.adicionarParticipante(
-                          txtNomePaticipante.text, 0.0);
+                      lista.adicionarParticipante(txtNomePaticipante.text, 0.0);
                       txtNomePaticipante.clear();
                     });
                   },
@@ -162,15 +161,17 @@ class _CompraColetivaState extends State<CompraColetiva> {
                             color: Colors.redAccent,
                             onPressed: () {
                               //
-                              exibirAlerta(
-                                  context,
-                                  'Remover participante',
-                                  'Tem certesa que deseja remover o participante?',
-                                  'cancel_yes');
+                              //Botão remover participante
+                              //
+
+                              setState(() {
+                                lista.participantes.removeAt(index);
+                                //
+                              });
                             },
                             //
                           ),
-                          title: Text(partici.participantes[index].nome,
+                          title: Text(lista.participantes[index].nome,
                               style: const TextStyle(fontSize: 12)),
                           trailing: IconButton(
                             icon: const Icon(
@@ -178,18 +179,69 @@ class _CompraColetivaState extends State<CompraColetiva> {
                               color: Colors.indigo,
                             ),
                             onPressed: () {
-                              exibirAlerta(
-                                  context,
-                                  'Editar nome do participante',
-                                  'Digite o novo nome:',
-                                  'input_ok');
+                              txtMudaNome.text =
+                                  lista.participantes[index].nome;
+
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text(
+                                        'Mudar o nome do participante'),
+                                    content: SizedBox(
+                                      height: 150,
+                                      child: Column(
+                                        children: [
+                                          const Text(
+                                            "Digite o novo nome",
+                                          ),
+                                          const SizedBox(height: 25),
+                                          TextField(
+                                            controller: txtMudaNome,
+                                            decoration: const InputDecoration(
+                                              labelText: 'nome',
+                                              prefixIcon:
+                                                  Icon(Icons.change_circle),
+                                              border: OutlineInputBorder(),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    actionsPadding: const EdgeInsets.all(20),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text('Cancelar'),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          if (txtMudaNome.text.isEmpty) {
+                                            Navigator.pop(context);
+                                          } else {
+                                            Navigator.pop(
+                                                context, txtMudaNome.text);
+                                          }
+                                        },
+                                        child: const Text('Salvar'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ).then((nome) {
+                                setState(() {
+                                  lista.participantes[index].nome = nome;
+                                });
+                              });
                             },
                           ),
                         );
                       },
                       padding: const EdgeInsets.all(10),
                       separatorBuilder: (_, __) => const Divider(),
-                      itemCount: partici.participantes.length),
+                      itemCount: lista.participantes.length),
                 ),
               ],
             ),
