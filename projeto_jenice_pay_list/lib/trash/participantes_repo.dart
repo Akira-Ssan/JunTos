@@ -1,4 +1,8 @@
-import 'package:projeto_jenice_pay_list/model/participante_model.dart';
+class Pessoa {
+  String nome;
+
+  Pessoa({required this.nome});
+}
 
 class PessoaRepo {
   static List<Pessoa> tabela = [

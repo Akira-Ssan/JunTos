@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 //import 'package:projeto_jenice_pay_list/view/compra_coletiva_novo_editar_view.dart';
 import 'package:projeto_jenice_pay_list/view/cadastro_login_view.dart';
 import 'package:projeto_jenice_pay_list/view/gerenciar_compra_coletiva_view.dart';
-import 'package:projeto_jenice_pay_list/view/gerenciar_inserir_pagamento_view.dart';
+//import 'package:projeto_jenice_pay_list/view/gerenciar_inserir_pagamento_view.dart';
 import 'package:projeto_jenice_pay_list/view/login_view.dart';
 //import 'package:projeto_jenice_pay_list/view/participante_editar_view.dart';
 //import 'package:projeto_jenice_pay_list/view/participantes_view.dart';
@@ -42,8 +42,8 @@ Future<void> main() async {
           //'CompraColetivaNEview': (context) => CompraColetivaNVview(),
           //'Participantes': (context) => ParticipantesView(),
           //'ParticipanteEditar': (context) => ParticipanteEditarView(),
-          'Gerenciar': (context) => GerenciarView(),
-          'GerenciarInserirPagamento': (context) => GerenciarPagamento(),
+          //'Gerenciar': (context) => GerenciarView(),
+          //'GerenciarInserirPagamento': (context) => GerenciarPagamento(),
           'Sobre': (context) => SobreView(),
           //'Cadastro':(context) => CadastroLoginView(),
         },

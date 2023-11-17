@@ -1,11 +1,13 @@
-class Pessoa {
+/*class Pessoa {
   String nome;
 
   Pessoa({required this.nome});
 }
 
-//
+
+
 class Participante {
+  
   String nome;
   double valorDado;
 
@@ -33,7 +35,7 @@ class Vaquinha {
   double valor;
   ListaParticipantes listaParticipantes = ListaParticipantes();
 
-  Vaquinha(this.uid, this.titulo, this.descricao, this.valor);
+  Vaquinha(this.uid, this.titulo, this.descricao, this.valor, this.listaParticipantes);
 
   factory Vaquinha.fromJson(Map<String, dynamic> json) {
     final participantesJson = json['listaParticipantes'] as List<dynamic>;
@@ -81,7 +83,7 @@ class Vaquinha {
   }
 }
 
-/*
+
 void main() {
   String jsonString = '{"uid": "1", "titulo": "Festa de Aniversário", "descricao": "Contribuição para a festa de aniversário", "valor": 100.0, "listaParticipantes": [{"nome": "Alice", "valorDado": 10.0}, {"nome": "Bob", "valorDado": 15.0}]}';
 
@@ -107,3 +109,86 @@ void main() {
   print("JSON Serializado: $jsonStringToEncode");
 }
 */
+
+class Participante {
+  String nome;
+  double valorDado;
+
+  Participante(this.nome, this.valorDado);
+
+  Map<String, dynamic> toJson() {
+    return {
+      'nome': nome,
+      'valorDado': valorDado,
+    };
+  }
+}
+
+class ListaParticipantes {
+  List<Participante> participantes = [];
+
+  void adicionarParticipante(String nome, double valorDado) {
+    participantes.add(Participante(nome, valorDado));
+  }
+
+  void removerParticipante(int index) {
+    if (index >= 0 && index < participantes.length) {
+      participantes.removeAt(index);
+    }
+  }
+}
+
+class Vaquinha {
+  String uid;
+  String titulo;
+  String descricao;
+  double valor;
+  ListaParticipantes listaParticipantes = ListaParticipantes();
+
+  Vaquinha(this.uid, this.titulo, this.descricao, this.valor,
+      {required List<Participante> participantes}) {
+    listaParticipantes.participantes = participantes;
+  }
+
+  factory Vaquinha.fromJson(Map<String, dynamic> json) {
+    final participantesJson = json['listaParticipantes'] as List<dynamic>;
+    final listaParticipantes = ListaParticipantes();
+
+    for (var participanteJson in participantesJson) {
+      final nome = participanteJson['nome'] as String;
+      final valorDado = participanteJson['valorDado'] as double;
+      listaParticipantes.adicionarParticipante(nome, valorDado);
+    }
+
+    return Vaquinha(
+      json['uid'] as String,
+      json['titulo'] as String,
+      json['descricao'] as String,
+      json['valor'] as double,
+      participantes: listaParticipantes.participantes,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'uid': uid,
+      'titulo': titulo,
+      'descricao': descricao,
+      'valor': valor,
+      'listaParticipantes':
+          listaParticipantes.participantes.map((p) => p.toJson()).toList(),
+    };
+  }
+
+  int quantidadeDeParticipantes() {
+    return listaParticipantes.participantes.length;
+  }
+
+  double totalValorDadoPorParticipantes() {
+    double total = 0;
+    for (var participante in listaParticipantes.participantes) {
+      total += participante.valorDado;
+    }
+    return total;
+  }
+}

@@ -1,3 +1,5 @@
+/*
+
 import 'package:flutter/material.dart';
 import 'package:projeto_jenice_pay_list/repository/participantes_repo.dart';
 import 'package:projeto_jenice_pay_list/view/custom_widgets_view/alert_dialogue_fn.dart';
@@ -13,6 +15,13 @@ class GerenciarView extends StatefulWidget {
 
 class _GerenciarViewState extends State<GerenciarView> {
   final tabela = PessoaRepo.tabela;
+
+
+  @override
+  void initState() {
+   
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,3 +72,4 @@ class _GerenciarViewState extends State<GerenciarView> {
     );
   }
 }
+*/

@@ -45,6 +45,81 @@ class TelaMenu extends StatelessWidget {
           ],
         ),
       ),
+
+      //
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            const UserAccountsDrawerHeader(
+              decoration: BoxDecoration(color: Color(0xff0A6D92)),
+              accountName: Text("User name"),
+              accountEmail: Text("user@e-mail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Icon(
+                  Icons.account_circle_sharp,
+                  color: Color.fromARGB(255, 90, 106, 111),
+                  size: 70.0,
+                  semanticLabel: 'Text to announce in accessibility modes',
+                ),
+                /*   Text(
+                  "RL",
+                  style: TextStyle(fontSize: 40),
+                ),
+             */
+              ),
+            ),
+            /*
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text('Drawer Header'),
+            ),
+            
+            */
+
+            ListTile(
+              title: const Text('Sobre'),
+              //selected: _selectedIndex == 0,
+              onTap: () {
+                // Update the state of the app
+                //_onItemTapped(0);
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Sair'),
+              //selected: _selectedIndex == 1,
+              onTap: () {
+                // Update the state of the app
+                //_onItemTapped(1);
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            /*ListTile(
+              title: const Text('School'),
+              selected: _selectedIndex == 2,
+              onTap: () {
+                // Update the state of the app
+                _onItemTapped(2);
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            */
+          ],
+        ),
+      ),
+      //
+
       body: //Padding(
           //padding: const EdgeInsets.all(10),
           //child:

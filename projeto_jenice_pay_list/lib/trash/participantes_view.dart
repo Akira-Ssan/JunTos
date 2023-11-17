@@ -1,5 +1,7 @@
+/*
+
 import 'package:flutter/material.dart';
-import 'package:projeto_jenice_pay_list/repository/participantes_repo.dart';
+//import 'package:projeto_jenice_pay_list/repository/participantes_repo.dart';
 import 'package:projeto_jenice_pay_list/view/custom_widgets_view/alert_dialogue_fn.dart';
 
 class ParticipantesView extends StatefulWidget {
@@ -88,3 +90,5 @@ class _ParticipantesViewState extends State<ParticipantesView> {
         ));
   }
 }
+
+*/

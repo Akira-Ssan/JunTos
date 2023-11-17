@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_jenice_pay_list/repository/participantes_repo.dart';
+import 'package:projeto_jenice_pay_list/model/participante_model.dart';
 import 'package:projeto_jenice_pay_list/view/custom_widgets_view/alert_dialogue_fn.dart';
 
 class CompraColetiva extends StatefulWidget {
@@ -14,10 +14,19 @@ class _CompraColetivaState extends State<CompraColetiva> {
   var txtSubtitulo = TextEditingController();
   var txtValor = TextEditingController();
   var txtNomePaticipante = TextEditingController();
+  var partici = ListaParticipantes();
+
+  @override
+  void initState() {
+    //partici.adicionarParticipante('Jenice', 0.0);
+    //partici.adicionarParticipante('Plotze', 0.0);
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    var tabela = PessoaRepo.tabela;
+    //var tabela = PessoaRepo.tabela;
 
     return Scaffold(
       /*appBar: AppBar(
@@ -37,10 +46,17 @@ class _CompraColetivaState extends State<CompraColetiva> {
             //
             //Textfield Titulo
             //
+            const Text(
+              'Criar Vaquinha',
+              style: TextStyle(fontSize: 28),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             TextField(
               controller: txtTitulo,
               style: const TextStyle(
-                fontSize: 12,
+                fontSize: 14,
               ),
               decoration: const InputDecoration(
                 labelText: 'Titulo',
@@ -59,7 +75,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
               maxLines: 2,
               //obscureText: true,
               style: const TextStyle(
-                fontSize: 12,
+                fontSize: 14,
               ),
               decoration: const InputDecoration(
                 labelText: 'Descrição',
@@ -79,7 +95,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
 
               //obscureText: true,
               style: const TextStyle(
-                fontSize: 12,
+                fontSize: 14,
               ),
               decoration: const InputDecoration(
                   labelText: 'Valor',
@@ -100,18 +116,30 @@ class _CompraColetivaState extends State<CompraColetiva> {
               controller: txtNomePaticipante,
               //obscureText: true,
               style: const TextStyle(
-                fontSize: 12,
+                fontSize: 14,
               ),
               decoration: InputDecoration(
-                labelText: 'Nome',
-                hintText: 'Entre com o nome',
+                labelText: 'Participantes',
+                hintText: 'Entre com o nome do participante',
                 border: const OutlineInputBorder(),
                 //prefixIcon: const Icon(Icons.person),
+                //
+                //Bogtão para inserção de participantes
+                //
                 suffix: IconButton(
                   icon: const Icon(Icons.person_add_alt_1),
                   tooltip: 'Adicionar participante',
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      partici.adicionarParticipante(
+                          txtNomePaticipante.text, 0.0);
+                      txtNomePaticipante.clear();
+                    });
+                  },
                 ),
+                //
+                //
+                //
               ),
             ),
 
@@ -142,7 +170,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
                             },
                             //
                           ),
-                          title: Text(tabela[index].nome,
+                          title: Text(partici.participantes[index].nome,
                               style: const TextStyle(fontSize: 12)),
                           trailing: IconButton(
                             icon: const Icon(
@@ -161,7 +189,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
                       },
                       padding: const EdgeInsets.all(10),
                       separatorBuilder: (_, __) => const Divider(),
-                      itemCount: tabela.length),
+                      itemCount: partici.participantes.length),
                 ),
               ],
             ),
@@ -202,7 +230,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
                   child: const Text('Salvar'),
                   onPressed: () {
                     //
-                    //Ação ao pressionar o botão +
+                    //Ação para salvar a vaquinha no banco de dados
                     //
                     Navigator.pushNamed(context, 'TelaMenu');
                   },
