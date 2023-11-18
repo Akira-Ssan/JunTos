@@ -138,14 +138,19 @@ class ListaParticipantes {
   }
 }
 
+var t1 = ListaParticipantes();
+
 class Vaquinha {
   String uid;
   String titulo;
   String descricao;
   double valor;
+  int? qtdParticipantes;
+  double? valorTotalParticipantes;
   ListaParticipantes listaParticipantes = ListaParticipantes();
 
   Vaquinha(this.uid, this.titulo, this.descricao, this.valor,
+      this.qtdParticipantes, this.valorTotalParticipantes,
       {required List<Participante> participantes}) {
     listaParticipantes.participantes = participantes;
   }
@@ -165,6 +170,8 @@ class Vaquinha {
       json['titulo'] as String,
       json['descricao'] as String,
       json['valor'] as double,
+      json['qtdParticipantes'] as int,
+      json['valorTotalParticipantes'] as double,
       participantes: listaParticipantes.participantes,
     );
   }
@@ -175,6 +182,8 @@ class Vaquinha {
       'titulo': titulo,
       'descricao': descricao,
       'valor': valor,
+      'qtdParticipantes': qtdParticipantes,
+      'valorTotalParticipantes': valorTotalParticipantes,
       'listaParticipantes':
           listaParticipantes.participantes.map((p) => p.toJson()).toList(),
     };

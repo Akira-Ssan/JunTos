@@ -1,9 +1,6 @@
-/*
-
 import 'package:flutter/material.dart';
-import 'package:projeto_jenice_pay_list/repository/participantes_repo.dart';
-import 'package:projeto_jenice_pay_list/view/custom_widgets_view/alert_dialogue_fn.dart';
-import 'package:projeto_jenice_pay_list/view/custom_widgets_view/card_gerencia.dart';
+import '../repository/teste.dart';
+
 //import 'package:projeto_jenice_pay_list/view/custom_widgets_view/user_card2.dart';
 
 class GerenciarView extends StatefulWidget {
@@ -14,12 +11,10 @@ class GerenciarView extends StatefulWidget {
 }
 
 class _GerenciarViewState extends State<GerenciarView> {
-  final tabela = PessoaRepo.tabela;
-
+  var txtValorDado = TextEditingController();
 
   @override
   void initState() {
-   
     super.initState();
   }
 
@@ -39,7 +34,80 @@ class _GerenciarViewState extends State<GerenciarView> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [
-          const CardGerencia(),
+          Center(
+            child: Card(
+              elevation: 5,
+              child: Column(
+                children: [
+                  Container(
+                    alignment: const Alignment(0, 0),
+                    width: 380,
+                    height: 36,
+                    color: Colors.teal[200],
+                    child: Text(
+                      vaquis.titulo,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 22),
+                    ),
+                  ),
+                  const Divider(),
+                  Text(
+                    'R\$ ${vaquis.totalValorDadoPorParticipantes().toStringAsFixed(2)} '
+                    '(${(vaquis.totalValorDadoPorParticipantes() / vaquis.valor * 100).toStringAsFixed(2)}%)',
+                    style: const TextStyle(
+                        fontSize: 22,
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const Divider(
+                      //color: Colors.amber,
+                      //endIndent: 80,
+                      //indent: 80,
+                      //height: 10,
+                      //thickness: 3,
+                      ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Column(
+                        children: [
+                          const Text('Meta'),
+                          const Divider(),
+                          Text(vaquis.valor.toStringAsFixed(2))
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          const Text('Restam'),
+                          const Divider(),
+                          Text((vaquis.valor -
+                                  vaquis.totalValorDadoPorParticipantes())
+                              .toStringAsFixed(2))
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          const Text('Participantes'),
+                          const Divider(),
+                          Text(vaquis.quantidadeDeParticipantes().toString())
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          const Text('Cota por pessoa'),
+                          const Divider(),
+                          Text((vaquis.valor /
+                                  vaquis.quantidadeDeParticipantes())
+                              .toStringAsFixed(2))
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
           SizedBox(
             height: 580,
             child: ListView.separated(
@@ -53,23 +121,78 @@ class _GerenciarViewState extends State<GerenciarView> {
                           color: Color.fromARGB(255, 41, 153, 47),
                         ),
                         onPressed: () {
-                          exibirAlerta(context, 'Fazer pagamento',
-                              'Digite o valor', 'input_ok',
-                              hint: 'Valor');
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text(
+                                    'Recebendo pagamento de ${vaquis.listaParticipantes.participantes[index].nome}'),
+                                content: SizedBox(
+                                  height: 150,
+                                  child: Column(
+                                    children: [
+                                      const Text(
+                                        "Digite o valor",
+                                      ),
+                                      const SizedBox(height: 25),
+                                      TextField(
+                                        controller: txtValorDado,
+                                        decoration: const InputDecoration(
+                                          labelText: 'valor',
+                                          prefixIcon:
+                                              Icon(Icons.monetization_on),
+                                          border: OutlineInputBorder(),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                actionsPadding: const EdgeInsets.all(20),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text('Voltar'),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      if (txtValorDado.text.isEmpty) {
+                                        Navigator.pop(context);
+                                      } else {
+                                        Navigator.pop(
+                                            context, txtValorDado.text);
+                                      }
+                                    },
+                                    child: const Text('Salvar'),
+                                  ),
+                                ],
+                              );
+                            },
+                          ).then((valor) {
+                            setState(() {
+                              vaquis.listaParticipantes.participantes[index]
+                                  .valorDado += double.parse(valor);
+                              txtValorDado.clear();
+                              vaquis.totalValorDadoPorParticipantes();
+                            });
+                          });
                         }),
+                    //tabela[index].nome
 
-                    title: Text('${index + 1}. ${tabela[index].nome}'),
+                    title: Text(
+                        '${index + 1}. ${vaquis.listaParticipantes.participantes[index].nome}'),
                     // ignore: prefer_const_constructors
-                    trailing: Text('R\$ 100,00'),
+                    trailing: Text(
+                        'R\$ ${vaquis.listaParticipantes.participantes[index].valorDado.toStringAsFixed(2)}'),
                   );
                 },
                 padding: const EdgeInsets.all(16),
                 separatorBuilder: (_, __) => const Divider(),
-                itemCount: tabela.length),
+                itemCount: vaquis.listaParticipantes.participantes.length),
           ),
         ]),
       ),
     );
   }
 }
-*/

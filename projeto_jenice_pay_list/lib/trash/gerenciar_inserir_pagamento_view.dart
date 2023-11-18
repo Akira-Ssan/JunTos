@@ -22,7 +22,7 @@ class _GerenciarPagamentoState extends State<GerenciarPagamento> {
         ),
         title: const Text('Inserir pagamento: \$Participante'),
       ),
-      body: const CardGerencia(),
+      //   body: const CardGerencia(),
     );
   }
 }

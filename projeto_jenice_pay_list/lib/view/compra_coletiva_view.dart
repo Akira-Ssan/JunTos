@@ -18,8 +18,8 @@ class _CompraColetivaState extends State<CompraColetiva> {
 
   @override
   void initState() {
-    //partici.adicionarParticipante('Jenice', 0.0);
-    //partici.adicionarParticipante('Plotze', 0.0);
+    //lista.adicionarParticipante('Jenice', 0.0);
+    //lista.adicionarParticipante('Plotze', 0.0);
 
     super.initState();
   }

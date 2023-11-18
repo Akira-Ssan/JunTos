@@ -1,13 +1,30 @@
 import 'package:flutter/material.dart';
 
 class CardGerencia extends StatefulWidget {
-  const CardGerencia({super.key});
+  final String titulo;
+  final String descricao;
+  final double valor;
+  final int qtdParticipantes;
+  final double valorTotalParticipantes;
+
+  const CardGerencia(
+      {super.key,
+      required this.titulo,
+      required this.descricao,
+      required this.valor,
+      required this.qtdParticipantes,
+      required this.valorTotalParticipantes});
 
   @override
   State<CardGerencia> createState() => _CardGerenciaState();
 }
 
 class _CardGerenciaState extends State<CardGerencia> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Column(
