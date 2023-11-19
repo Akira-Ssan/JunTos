@@ -15,9 +15,35 @@ class Membros {
 
 Vaquinha vaquis = Vaquinha(
     'AuWid',
+    'Comprar Rasperry Pi 5.000',
+    'Vaquinha para comprar o Rasperry Pi 5.000 para o professor Tanaka. Se com o Rasperry 0 ele já milagres...',
+    5000.0,
+    null,
+    null,
+    participantes: Membros().participante);
+
+class ListaVaquis {
+  List<Vaquinha> listaVaquinhas = [
+    Vaquinha(
+        'AuWid',
+        'Comprar ovo de dragão',
+        'Dizem que dormir todos os dias ao lado deum ovo de dragão dá sorte na programação.',
+        5000.0,
+        null,
+        null,
+        participantes: Membros().participante)
+  ];
+
+  void addv(Vaquinha v) {
+    listaVaquinhas.add(v);
+  }
+  /* Vaquinha(
+    'AuWid',
     'Comprar ovo de dragão',
     'Dizem que dormir todos os dias ao lado deum ovo de dragão dá sorte na programação.',
     5000.0,
     null,
     null,
-    participantes: Membros().participante);
+    participantes: Membros().participante)
+  ]*/
+}

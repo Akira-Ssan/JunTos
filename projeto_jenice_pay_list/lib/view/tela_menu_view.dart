@@ -1,52 +1,32 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../controller/login_controller.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class TelaMenu extends StatelessWidget {
+import '../model/participante_model.dart';
+import '../repository/teste.dart';
+
+class TelaMenu extends StatefulWidget {
   const TelaMenu({super.key});
 
-  void closeAppUsingSystemPop() {
-    SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+  @override
+  State<TelaMenu> createState() => _TelaMenuState();
+}
+
+class _TelaMenuState extends State<TelaMenu> {
+  var vacosa = ListaVaquis();
+
+  @override
+  void initState() {
+    vacosa.addv(vaquis);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            const Expanded(child: Text('Vaquinha')),
-            FutureBuilder<String>(
-              future: LoginController().usuarioLogado(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  return Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: TextButton.icon(
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        textStyle: const TextStyle(fontSize: 12),
-                      ),
-                      onPressed: () {
-                        LoginController().logout();
-                        Navigator.pushReplacementNamed(context, 'Login');
-                      },
-                      icon: const Icon(Icons.exit_to_app, size: 18),
-                      label: Text('Olá, ${snapshot.data.toString()}',
-                          style: const TextStyle(fontSize: 18)),
-                    ),
-                  );
-                }
-                return const Text('');
-              },
-            ),
-          ],
-        ),
-      ),
-
-      //
+      appBar: AppBar(title: const Text('Juntos app de vaquinha')),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
@@ -55,165 +35,122 @@ class TelaMenu extends StatelessWidget {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            const UserAccountsDrawerHeader(
-              decoration: BoxDecoration(color: Color(0xff0A6D92)),
-              accountName: Text("User name"),
-              accountEmail: Text("user@e-mail.com"),
-              currentAccountPicture: CircleAvatar(
+            UserAccountsDrawerHeader(
+              decoration: const BoxDecoration(color: Color(0xff0A6D92)),
+              accountName: FutureBuilder<String>(
+                future: LoginController().usuarioLogado(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return Text(
+                      snapshot.data.toString(),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.amber),
+                    );
+                  }
+                  return const Text('');
+                },
+              ),
+              accountEmail: Text(
+                FirebaseAuth.instance.currentUser!.email.toString(),
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.amber),
+              ),
+              currentAccountPicture: const CircleAvatar(
+                radius: 64,
                 backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.account_circle_sharp,
-                  color: Color.fromARGB(255, 90, 106, 111),
-                  size: 70.0,
-                  semanticLabel: 'Text to announce in accessibility modes',
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Fatec',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    Text(
+                      'Ribeirão Preto',
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
                 ),
-                /*   Text(
-                  "RL",
-                  style: TextStyle(fontSize: 40),
-                ),
-             */
               ),
             ),
-            /*
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text('Drawer Header'),
-            ),
-            
-            */
-
             ListTile(
               title: const Text('Sobre'),
               //selected: _selectedIndex == 0,
               onTap: () {
-                // Update the state of the app
-                //_onItemTapped(0);
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushNamed(context, 'Sobre');
               },
             ),
             ListTile(
               title: const Text('Sair'),
               //selected: _selectedIndex == 1,
               onTap: () {
-                // Update the state of the app
-                //_onItemTapped(1);
-                // Then close the drawer
-                Navigator.pop(context);
+                LoginController().logout();
+                Navigator.pushReplacementNamed(context, 'Login');
               },
             ),
-            /*ListTile(
-              title: const Text('School'),
-              selected: _selectedIndex == 2,
-              onTap: () {
-                // Update the state of the app
-                _onItemTapped(2);
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            */
           ],
         ),
       ),
       //
 
-      body: //Padding(
-          //padding: const EdgeInsets.all(10),
-          //child:
+      body: ListView.builder(
+        itemCount: vacosa.listaVaquinhas.length,
+        itemBuilder: (context, index) {
+          String id = vacosa.listaVaquinhas[index].uid;
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Card(
+              child: Column(mainAxisSize: MainAxisSize.min, children: [
+                SizedBox(
+                  width: double.infinity,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(5),
+                            topRight: Radius.circular(5))),
+                    padding: const EdgeInsets.all(5),
+                    child: Text(vacosa.listaVaquinhas[index].titulo,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w900,
+                        ),
+                        textAlign: TextAlign.center),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Text(
+                    vacosa.listaVaquinhas[index].descricao,
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+                /*ListTile(
+                  leading: const Icon(
+                    Icons.edit_document,
+                    size: 48,
+                    color: Colors.amber,
+                  ),
+                  title: Text(
+                      'Valor: R\$ ${(vacosa.listaVaquinhas[index].valor).toStringAsFixed(2)}'),
+                  subtitle: Text(
+                      'Participantes: ${vacosa.listaVaquinhas[index].quantidadeDeParticipantes()}\nValor arrecado: R\$ ${(vacosa.listaVaquinhas[index].totalValorDadoPorParticipantes()).toStringAsFixed(2)}'),
+                  trailing:
+                      Icon(Icons.arrow_forward, color: Colors.amber, size: 48),
+                )*/
+              ]),
+            ),
+          );
+        },
+        padding: const EdgeInsets.fromLTRB(5, 8, 5, 8),
+      ), //Padding(
+      //padding: const EdgeInsets.all(10),
+      //child:
 
-          Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            const SizedBox(
-              width: 0,
-              height: 0,
-            ),
-            SizedBox(
-              width: 280,
-              height: 60,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  //minimumSize: const Size(60, 60),
-                  textStyle: const TextStyle(fontSize: 28),
-                ),
-                child: const Text('Cadastrar vaquinha'),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'CompraColetiva');
-                },
-              ),
-            ),
-            /*
-            SizedBox(
-              width: 280,
-              height: 60,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(60, 60),
-                  textStyle: const TextStyle(fontSize: 28),
-                ),
-                child: const Text('Cadastrar pessoas'),
-                onPressed: () {
-                  Navigator.popAndPushNamed(context, 'Participantes');
-                },
-              ),
-            ),
-            */
-            SizedBox(
-              width: 280,
-              height: 70,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(60, 60),
-                  textStyle: const TextStyle(fontSize: 28),
-                ),
-                child: const Text('Gerenciar vaquinha'),
-                onPressed: () {
-                  Navigator.popAndPushNamed(context, 'Gerenciar');
-                },
-              ),
-            ),
-            SizedBox(
-              width: 280,
-              height: 60,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(60, 60),
-                  textStyle: const TextStyle(fontSize: 28),
-                ),
-                child: const Text('Sobre'),
-                onPressed: () {
-                  Navigator.pushNamed(context, 'Sobre');
-                },
-              ),
-            ),
-            /*
-            SizedBox(
-              width: 280,
-              height: 60,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(60, 60),
-                  textStyle: const TextStyle(fontSize: 28),
-                ),
-                child: const Text('Sair'),
-                onPressed: () {
-                  closeAppUsingSystemPop();
-                },
-              ),
-            ),*/
-            const SizedBox(
-              width: 1,
-              height: 80,
-            ),
-          ],
-        ),
-      ),
       //),
     );
   }

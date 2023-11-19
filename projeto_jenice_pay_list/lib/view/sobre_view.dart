@@ -58,7 +58,7 @@ class SobreView extends StatelessWidget {
             ),
             child: const Text('Voltar'),
             onPressed: () {
-              Navigator.popAndPushNamed(context, 'TelaMenu');
+              Navigator.pop(context);
             },
           ),
         ],
