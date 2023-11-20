@@ -13,6 +13,19 @@ class Membros {
   ];
 }
 
+class Membros1 {
+  List<Participante> participante = [
+    Participante('Taveira', 50.0),
+    Participante('Pelezito', 75.0),
+    Participante('Maria Homem', 105.0),
+    Participante('Val de Morte', 250.0),
+    Participante('Geleiana', 550.50),
+    Participante('Tamirez', 1.0),
+    Participante('Angelita', 20.25),
+    Participante('Valdirene', 35.0)
+  ];
+}
+
 Vaquinha vaquis = Vaquinha(
     'AuWid',
     'Comprar Rasperry Pi 5.000',
@@ -31,7 +44,7 @@ class ListaVaquis {
         5000.0,
         null,
         null,
-        participantes: Membros().participante)
+        participantes: Membros1().participante)
   ];
 
   void addv(Vaquinha v) {
