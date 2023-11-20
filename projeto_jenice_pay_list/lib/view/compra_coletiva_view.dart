@@ -53,7 +53,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
         ),
         title: const Text('Nova vaquinha'),
       ),*/
-      appBar: AppBar(title: Text(tituloPrincipal)),
+
       body: Padding(
         padding: const EdgeInsets.fromLTRB(15, 50, 15, 50),
         child: Column(
@@ -61,9 +61,9 @@ class _CompraColetivaState extends State<CompraColetiva> {
             //
             //Textfield Titulo
             //
-            const Text(
-              'Criar Vaquinha',
-              style: TextStyle(fontSize: 28),
+            Text(
+              tituloPrincipal,
+              style: const TextStyle(fontSize: 28),
             ),
             const SizedBox(
               height: 10,
