@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_jenice_pay_list/model/participante_model.dart';
 import '../repository/teste.dart';
 
 //import 'package:projeto_jenice_pay_list/view/custom_widgets_view/user_card2.dart';
@@ -20,6 +21,11 @@ class _GerenciarViewState extends State<GerenciarView> {
 
   @override
   Widget build(BuildContext context) {
+    //
+    //Recuperando os dados da vaquinha enviado
+    //
+    var vaquinha = ModalRoute.of(context)!.settings.arguments as Vaquinha;
+    //
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -39,25 +45,47 @@ class _GerenciarViewState extends State<GerenciarView> {
               elevation: 5,
               child: Column(
                 children: [
-                  Container(
+                  /*Container(
                     alignment: const Alignment(0, 0),
                     width: 380,
                     height: 36,
                     color: Colors.teal[200],
                     child: Text(
-                      vaquis.titulo,
+                      vaquinha.titulo,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 22),
                     ),
+                  )*/
+
+                  SizedBox(
+                    width: double.infinity,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                          color: Color.fromARGB(255, 128, 203, 196),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(5),
+                              topRight: Radius.circular(5))),
+                      padding: const EdgeInsets.all(5),
+                      child: Text(vaquinha.titulo,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w900,
+                          ),
+                          textAlign: TextAlign.center),
+                    ),
                   ),
-                  const Divider(),
-                  Text(
-                    'R\$ ${vaquis.totalValorDadoPorParticipantes().toStringAsFixed(2)} '
-                    '(${(vaquis.totalValorDadoPorParticipantes() / vaquis.valor * 100).toStringAsFixed(2)}%)',
-                    style: const TextStyle(
-                        fontSize: 22,
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold),
+                  //const Divider(),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                    child: Text(
+                      'R\$ ${vaquinha.totalValorDadoPorParticipantes().toStringAsFixed(2)} '
+                      '(${(vaquinha.totalValorDadoPorParticipantes() / vaquinha.valor * 100).toStringAsFixed(2)}%)',
+                      style: const TextStyle(
+                          fontSize: 22,
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                   const Divider(
                       //color: Colors.amber,
@@ -74,15 +102,15 @@ class _GerenciarViewState extends State<GerenciarView> {
                         children: [
                           const Text('Meta'),
                           const Divider(),
-                          Text(vaquis.valor.toStringAsFixed(2))
+                          Text(vaquinha.valor.toStringAsFixed(2))
                         ],
                       ),
                       Column(
                         children: [
                           const Text('Restam'),
                           const Divider(),
-                          Text((vaquis.valor -
-                                  vaquis.totalValorDadoPorParticipantes())
+                          Text((vaquinha.valor -
+                                  vaquinha.totalValorDadoPorParticipantes())
                               .toStringAsFixed(2))
                         ],
                       ),
@@ -90,15 +118,15 @@ class _GerenciarViewState extends State<GerenciarView> {
                         children: [
                           const Text('Participantes'),
                           const Divider(),
-                          Text(vaquis.quantidadeDeParticipantes().toString())
+                          Text(vaquinha.quantidadeDeParticipantes().toString())
                         ],
                       ),
                       Column(
                         children: [
                           const Text('Cota por pessoa'),
                           const Divider(),
-                          Text((vaquis.valor /
-                                  vaquis.quantidadeDeParticipantes())
+                          Text((vaquinha.valor /
+                                  vaquinha.quantidadeDeParticipantes())
                               .toStringAsFixed(2))
                         ],
                       ),
@@ -126,7 +154,7 @@ class _GerenciarViewState extends State<GerenciarView> {
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 title: Text(
-                                    'Recebendo pagamento de ${vaquis.listaParticipantes.participantes[index].nome}'),
+                                    'Recebendo pagamento de ${vaquinha.listaParticipantes.participantes[index].nome}'),
                                 content: SizedBox(
                                   height: 150,
                                   child: Column(
@@ -171,25 +199,25 @@ class _GerenciarViewState extends State<GerenciarView> {
                             },
                           ).then((valor) {
                             setState(() {
-                              vaquis.listaParticipantes.participantes[index]
+                              vaquinha.listaParticipantes.participantes[index]
                                   .valorDado += double.parse(valor);
                               txtValorDado.clear();
-                              vaquis.totalValorDadoPorParticipantes();
+                              vaquinha.totalValorDadoPorParticipantes();
                             });
                           });
                         }),
                     //tabela[index].nome
 
                     title: Text(
-                        '${index + 1}. ${vaquis.listaParticipantes.participantes[index].nome}'),
+                        '${index + 1}. ${vaquinha.listaParticipantes.participantes[index].nome}'),
                     // ignore: prefer_const_constructors
                     trailing: Text(
-                        'R\$ ${vaquis.listaParticipantes.participantes[index].valorDado.toStringAsFixed(2)}'),
+                        'R\$ ${vaquinha.listaParticipantes.participantes[index].valorDado.toStringAsFixed(2)}'),
                   );
                 },
                 padding: const EdgeInsets.all(16),
                 separatorBuilder: (_, __) => const Divider(),
-                itemCount: vaquis.listaParticipantes.participantes.length),
+                itemCount: vaquinha.listaParticipantes.participantes.length),
           ),
         ]),
       ),

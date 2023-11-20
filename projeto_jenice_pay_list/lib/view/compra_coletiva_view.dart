@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_jenice_pay_list/model/participante_model.dart';
 
@@ -10,11 +11,12 @@ class CompraColetiva extends StatefulWidget {
 
 class _CompraColetivaState extends State<CompraColetiva> {
   var txtTitulo = TextEditingController();
-  var txtSubtitulo = TextEditingController();
+  var txtDescricao = TextEditingController();
   var txtValor = TextEditingController();
   var txtNomePaticipante = TextEditingController();
   var txtMudaNome = TextEditingController();
   var lista = ListaParticipantes();
+  String tituloPrincipal = "Criar Vaquinha";
 
   @override
   void initState() {
@@ -26,7 +28,19 @@ class _CompraColetivaState extends State<CompraColetiva> {
 
   @override
   Widget build(BuildContext context) {
-    //var tabela = PessoaRepo.tabela;
+    //
+    //Recuperando os dados da vaquinha para Editar/Criar
+    //
+    var rotaAtual = ModalRoute.of(context);
+    //Antes verificando se é uma vaquinha nova ou editar
+    if (rotaAtual != null && rotaAtual.settings.arguments != null) {
+      var vaquinha = rotaAtual.settings.arguments as Vaquinha;
+      txtTitulo.text = vaquinha.titulo;
+      txtDescricao.text = vaquinha.descricao;
+      txtValor.text = vaquinha.valor.toStringAsFixed(2);
+      lista = vaquinha.listaParticipantes;
+      tituloPrincipal = "Editar Vaquinha";
+    }
 
     return Scaffold(
       /*appBar: AppBar(
@@ -39,6 +53,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
         ),
         title: const Text('Nova vaquinha'),
       ),*/
+      appBar: AppBar(title: Text(tituloPrincipal)),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(15, 50, 15, 50),
         child: Column(
@@ -71,7 +86,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
             //Textfield Descrição
             //
             TextField(
-              controller: txtSubtitulo,
+              controller: txtDescricao,
               maxLines: 2,
               //obscureText: true,
               style: const TextStyle(
@@ -266,7 +281,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
                     //
                     //Ação ao pressionar o botão +
                     //
-                    Navigator.pop(context);
+                    Navigator.popAndPushNamed(context, 'TelaMenu');
                   },
                 ),
                 //

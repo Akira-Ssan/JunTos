@@ -14,6 +14,10 @@ class _CompraColetivaNVviewState extends State<CompraColetivaNVview> {
 
   @override
   Widget build(BuildContext context) {
+//
+//Recuperando os dados da vaquinha para Editar/Criar
+//
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

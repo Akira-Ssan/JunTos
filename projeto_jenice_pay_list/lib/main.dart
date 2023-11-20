@@ -12,7 +12,7 @@ import 'view/gerenciar_compra_coletiva_view.dart';
 import 'view/login_view.dart';
 //import 'package:projeto_jenice_pay_list/view/participante_editar_view.dart';
 //import 'package:projeto_jenice_pay_list/view/participantes_view.dart';
-import 'view/principal_view.dart';
+import 'view/inicio_view.dart';
 import 'view/tela_menu_view.dart';
 import 'view/compra_coletiva_view.dart';
 import 'view/sobre_view.dart';
@@ -32,13 +32,13 @@ Future<void> main() async {
 
         // rotas de navegação
 
-        initialRoute: 'Principal',
+        initialRoute: 'Inicio',
         routes: {
-          'Principal': (context) => PrincipalView(),
+          'Inicio': (context) => InicioView(),
           'Login': (context) => LoginView(),
           'Cadastro': (context) => CadastroLoginView(),
           'TelaMenu': (context) => TelaMenu(),
-          'CompraColetiva': (context) => CompraColetiva(),
+          'CriarVaquinha': (context) => CompraColetiva(),
           //'CompraColetivaNEview': (context) => CompraColetivaNVview(),
           //'Participantes': (context) => ParticipantesView(),
           //'ParticipanteEditar': (context) => ParticipanteEditarView(),

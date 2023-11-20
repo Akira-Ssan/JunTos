@@ -35,8 +35,6 @@ void exibirAlerta(context, String title, String msg, String type,
                     ),
                     decoration: InputDecoration(
                       labelText: hint,
-
-                      
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -49,7 +47,7 @@ void exibirAlerta(context, String title, String msg, String type,
     }
   } else {
     {
-      Navigator.popAndPushNamed(context, 'Principal');
+      Navigator.popAndPushNamed(context, 'Inicio');
     }
   }
 }

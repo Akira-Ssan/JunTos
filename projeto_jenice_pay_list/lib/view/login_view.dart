@@ -27,7 +27,7 @@ class _LoginViewState extends State<LoginView> {
               actions: [
                 TextButton(
                   onPressed: () {
-                    //Navigator.pushNamed(context, 'principal');
+                    //Navigator.pushNamed(context, 'Inicio');
                     Navigator.of(ctx).pop();
                   },
                   child: Container(
@@ -62,7 +62,7 @@ class _LoginViewState extends State<LoginView> {
         title: Text('Login'),
       ),*/
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.fromLTRB(20, 60, 20, 20),
         child: Column(
           children: [
             Icon(
