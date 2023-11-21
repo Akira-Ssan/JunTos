@@ -163,7 +163,7 @@ class _CompraColetivaState extends State<CompraColetiva> {
             Column(
               children: [
                 SizedBox(
-                  height: 300,
+                  height: 430,
                   //
                   //Lista participantes add vaquinha
                   //

@@ -2,35 +2,36 @@ import '../model/participante_model.dart';
 
 class Membros {
   List<Participante> participante = [
-    Participante('Jannet', 30.0),
-    Participante('Jão', 25.0),
-    Participante('Josué', 50.0),
-    Participante('Verônica Vaz', 105.0),
-    Participante('Giana', 1.50),
-    Participante('Tandréia', 0.0),
-    Participante('Angelicia', 55.25),
-    Participante('Valdelicia', 85.0)
+    Participante('Kakashi Hatake', 150.0),
+    Participante('Hianata Hyuga', 25.0),
+    Participante('Sakura Haruno', 50.0),
+    Participante('Gaara', 60.0),
+    Participante('Jiraya', 10.50),
+    Participante('Shikamaru Nara', 0.0),
+    Participante('Asuma Sarutobi', 55.25),
+    Participante('Temari', 85.0),
+    Participante('Killer Bee', 500.0)
   ];
 }
 
 class Membros1 {
   List<Participante> participante = [
-    Participante('Taveira', 50.0),
-    Participante('Pelezito', 75.0),
-    Participante('Maria Homem', 105.0),
-    Participante('Val de Morte', 250.0),
-    Participante('Geleiana', 550.50),
-    Participante('Tamirez', 1.0),
-    Participante('Angelita', 20.25),
-    Participante('Valdirene', 35.0)
+    Participante('Hermione Granger', 5.0),
+    Participante('Draco Malfoy', 7.0),
+    Participante('Luna Lovegood', 10.0),
+    Participante('Lord Voldemort', 2.0),
+    Participante('Sirius Black', 0.50),
+    Participante('Cho Chang', 1.0),
+    Participante('Regulus Black', 2.0),
+    Participante('Astoria Greengrass', 35.0)
   ];
 }
 
 Vaquinha vaquis = Vaquinha(
     'AuWid',
-    'Comprar Rasperry Pi 5.000',
-    'Vaquinha para comprar o Rasperry Pi 5.000 para o professor Tanaka. Se com o Rasperry 0 ele já milagres...',
-    5000.0,
+    'Comprar Rasperry Pi 5',
+    'Vaquinha para comprar o Raspberry Pi5 para presentear o professor Tanaka.',
+    999.0,
     null,
     null,
     participantes: Membros().participante);
@@ -39,9 +40,9 @@ class ListaVaquis {
   List<Vaquinha> listaVaquinhas = [
     Vaquinha(
         'AuWid',
-        'Comprar ovo de dragão',
-        'Dizem que dormir todos os dias ao lado deum ovo de dragão dá sorte na programação.',
-        5000.0,
+        'Comprar Galinho do Flutter',
+        'Vaquinha para comprar o mascote de pelúcia do Flutter, presente para o Prof. Plotze',
+        99.0,
         null,
         null,
         participantes: Membros1().participante)

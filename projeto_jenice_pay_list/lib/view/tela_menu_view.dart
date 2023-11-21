@@ -20,15 +20,6 @@ class _TelaMenuState extends State<TelaMenu> {
   @override
   void initState() {
     vacosa.addv(vaquis);
-    vacosa.addv(vaquis);
-    vacosa.addv(vaquis);
-    vacosa.addv(vaquis);
-    vacosa.addv(vaquis);
-    vacosa.addv(vaquis);
-    vacosa.addv(vaquis);
-    vacosa.addv(vaquis);
-    vacosa.addv(vaquis);
-    vacosa.addv(vaquis);
     super.initState();
   }
 

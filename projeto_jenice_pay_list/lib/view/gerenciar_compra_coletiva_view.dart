@@ -94,43 +94,45 @@ class _GerenciarViewState extends State<GerenciarView> {
                       //height: 10,
                       //thickness: 3,
                       ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Column(
-                        children: [
-                          const Text('Meta'),
-                          const Divider(),
-                          Text(vaquinha.valor.toStringAsFixed(2))
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          const Text('Restam'),
-                          const Divider(),
-                          Text((vaquinha.valor -
-                                  vaquinha.totalValorDadoPorParticipantes())
-                              .toStringAsFixed(2))
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          const Text('Participantes'),
-                          const Divider(),
-                          Text(vaquinha.quantidadeDeParticipantes().toString())
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          const Text('Cota por pessoa'),
-                          const Divider(),
-                          Text((vaquinha.valor /
-                                  vaquinha.quantidadeDeParticipantes())
-                              .toStringAsFixed(2))
-                        ],
-                      ),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Column(
+                          children: [
+                            const Text('Meta'),
+                            const Divider(),
+                            Text('R\$ ${vaquinha.valor.toStringAsFixed(2)}')
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            const Text('Restam'),
+                            const Divider(),
+                            Text(
+                                'R\$ ${(vaquinha.valor - vaquinha.totalValorDadoPorParticipantes()).toStringAsFixed(2)}')
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            const Text('Participantes'),
+                            const Divider(),
+                            Text(
+                                vaquinha.quantidadeDeParticipantes().toString())
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            const Text('Cota por pessoa'),
+                            const Divider(),
+                            Text(
+                                'R\$ ${(vaquinha.valor / vaquinha.quantidadeDeParticipantes()).toStringAsFixed(2)}')
+                          ],
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),
