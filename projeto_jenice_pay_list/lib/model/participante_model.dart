@@ -45,14 +45,23 @@ class Vaquinha {
   String titulo;
   String descricao;
   double valor;
-  int? qtdParticipantes;
-  double? valorTotalParticipantes;
+  int qtdParticipantes;
+  double valorTotalParticipantes;
   ListaParticipantes listaParticipantes = ListaParticipantes();
 
   Vaquinha(this.uid, this.titulo, this.descricao, this.valor,
       this.qtdParticipantes, this.valorTotalParticipantes,
       {required List<Participante> participantes}) {
     listaParticipantes.participantes = participantes;
+  }
+
+  void atualizaQuantidadeParticipantes() {
+    qtdParticipantes = listaParticipantes.participantes.length;
+  }
+
+  void atualizaValorTotalParticipantes() {
+    valorTotalParticipantes =
+        listaParticipantes.totalValorDadoPorParticipantes();
   }
 
   factory Vaquinha.fromJson(Map<String, dynamic> json) {

@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:projeto_jenice_pay_list/controller/login_controller.dart';
 import '../controller/tarefa_controller.dart';
@@ -20,6 +21,25 @@ class _CompraColetivaState extends State<CompraColetiva> {
   var lista = ListaParticipantes();
   String tituloPrincipal = "Criar vaquinha";
   dynamic docID;
+  final listaNomes = [
+    'Murilo Chellegatti',
+    'Murilo Francisco',
+    'Murilo L. Manfre',
+    'Yan Ken Po',
+    'Lucas',
+    'Ronald MC',
+    'Jenice',
+    'Guilherme F. A. Rodrigues',
+    'Gabriel José',
+    'Gabriel L. Figueiredo',
+    'Gabriel Souza',
+    'Gabriel Só',
+    'Testa de Léo',
+    'Curva de Plotze',
+    'Ângelo Marcari',
+    'Luis F. N. Barcheschi'
+        'Akira-Ssan'
+  ];
 
   @override
   void initState() {
@@ -138,10 +158,20 @@ class _CompraColetivaState extends State<CompraColetiva> {
                   icon: const Icon(Icons.person_add_alt_1),
                   tooltip: 'Adicionar participante',
                   onPressed: () {
-                    setState(() {
-                      lista.adicionarParticipante(txtNomePaticipante.text, 0.0);
-                      txtNomePaticipante.clear();
-                    });
+                    if (txtNomePaticipante.text.isNotEmpty) {
+                      setState(() {
+                        lista.adicionarParticipante(
+                            txtNomePaticipante.text, 0.0);
+                        txtNomePaticipante.clear();
+                      });
+                    } else {
+                      Random r = Random();
+                      var nome = listaNomes[r.nextInt(listaNomes.length)];
+                      setState(() {
+                        lista.adicionarParticipante(nome, 0.0);
+                        txtNomePaticipante.clear();
+                      });
+                    }
                   },
                 ),
                 //

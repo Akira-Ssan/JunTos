@@ -21,19 +21,6 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    //Preenche o campo email e senha
-    //depois de cadastrar
-    var argsDaRota = ModalRoute.of(context);
-
-    if (argsDaRota != null && argsDaRota.settings.arguments != null) {
-      var argsLista = argsDaRota.settings.arguments as List;
-      var email = argsLista[0] as String;
-      var senha = argsLista[1] as String;
-
-      txtEmail.text = email;
-      txtPassw.text = senha;
-      //
-    }
     return Scaffold(
       /*appBar: AppBar(
         title: Text('Login'),
@@ -192,3 +179,20 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
+/*
+//Preenche o campo email e senha
+    //depois de cadastrar
+    //
+    var argsDaRota = ModalRoute.of(context);
+
+    if (argsDaRota != null && argsDaRota.settings.arguments != null) {
+      var argsLista = argsDaRota.settings.arguments as List;
+      var email = argsLista[0] as dynamic;
+      var senha = argsLista[1] as dynamic;
+
+      txtEmail.text = email.toString();
+      txtPassw.text = senha.toString();
+
+      //
+    }
+    */

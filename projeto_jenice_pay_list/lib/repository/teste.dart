@@ -1,4 +1,4 @@
-import '../model/participante_model.dart';
+/*import '../model/participante_model.dart';
 
 class Membros {
   List<Participante> participante = [
@@ -61,3 +61,4 @@ class ListaVaquis {
     participantes: Membros().participante)
   ]*/
 }
+*/

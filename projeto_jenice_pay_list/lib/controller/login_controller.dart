@@ -27,8 +27,13 @@ class LoginController {
       );
 
       sucesso(context, 'Usuário criado com sucesso.');
-      var args = [email, senha];
+      /*
+      //passando argumentos para a tela login com o email
+      //e senha cadastrado para preenchimento automático.
+      final args = [email, senha];
       Navigator.popAndPushNamed(context, 'LoginView', arguments: args);
+      */
+      Navigator.pop(context);
     }).catchError((e) {
       switch (e.code) {
         case 'email-already-in-use':

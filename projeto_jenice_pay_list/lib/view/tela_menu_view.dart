@@ -17,11 +17,8 @@ class TelaMenu extends StatefulWidget {
 }
 
 class _TelaMenuState extends State<TelaMenu> {
-  var vacosa = ListaVaquis();
-
   @override
   void initState() {
-    vacosa.addv(vaquis);
     super.initState();
   }
 
@@ -331,7 +328,14 @@ class _TelaMenuState extends State<TelaMenu> {
                     padding: const EdgeInsets.fromLTRB(5, 8, 5, 8),
                   );
                 } else {
-                  return const Center(child: Text('data'));
+                  return Center(
+                      child: GestureDetector(
+                    child: const Icon(Icons.add_reaction,
+                        color: Colors.blue, size: 248),
+                    onTap: () {
+                      Navigator.popAndPushNamed(context, 'CriarVaquinha');
+                    },
+                  ));
                 }
             }
           },

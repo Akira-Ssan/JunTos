@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_jenice_pay_list/model/participante_model.dart';
-
+import '../model/participante_model.dart';
 import '../controller/login_controller.dart';
 import '../controller/tarefa_controller.dart';
 //import '../repository/teste.dart';
@@ -28,7 +27,7 @@ class _GerenciarViewState extends State<GerenciarView> {
   @override
   Widget build(BuildContext context) {
     var argsv = ModalRoute.of(context)!.settings.arguments as List;
-    var vaquinha = argsv[0];
+    var vaquinha = argsv[0] as Vaquinha;
     dynamic docID = argsv[1];
 
     return Scaffold(
@@ -84,8 +83,8 @@ class _GerenciarViewState extends State<GerenciarView> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                     child: Text(
-                      'R\$ ${vaquinha.listaParticipantes.totalValorDadoPorParticipantes().toStringAsFixed(2)} '
-                      '(${(vaquinha.listaParticipantes.totalValorDadoPorParticipantes() / vaquinha.valor * 100).toStringAsFixed(2)}%)',
+                      'R\$ ${vaquinha.valorTotalParticipantes.toStringAsFixed(2)} '
+                      '(${(vaquinha.valorTotalParticipantes / vaquinha.valor * 100).toStringAsFixed(2)}%)',
                       style: const TextStyle(
                           fontSize: 22,
                           color: Colors.green,
@@ -117,16 +116,14 @@ class _GerenciarViewState extends State<GerenciarView> {
                             const Text('Restam'),
                             const Divider(),
                             Text(
-                                'R\$ ${(vaquinha.valor - vaquinha.listaParticipantes.totalValorDadoPorParticipantes()).toStringAsFixed(2)}')
+                                'R\$ ${(vaquinha.valor - vaquinha.valorTotalParticipantes).toStringAsFixed(2)}')
                           ],
                         ),
                         Column(
                           children: [
                             const Text('Participantes'),
                             const Divider(),
-                            Text(vaquinha.listaParticipantes
-                                .quantidadeDeParticipantes()
-                                .toString())
+                            Text(vaquinha.qtdParticipantes.toString())
                           ],
                         ),
                         Column(
@@ -134,7 +131,7 @@ class _GerenciarViewState extends State<GerenciarView> {
                             const Text('Cota por pessoa'),
                             const Divider(),
                             Text(
-                                'R\$ ${(vaquinha.valor / vaquinha.listaParticipantes.quantidadeDeParticipantes()).toStringAsFixed(2)}')
+                                'R\$ ${(vaquinha.valor / vaquinha.qtdParticipantes).toStringAsFixed(2)}')
                           ],
                         ),
                       ],
@@ -209,9 +206,8 @@ class _GerenciarViewState extends State<GerenciarView> {
                             setState(() {
                               vaquinha.listaParticipantes.participantes[index]
                                   .valorDado += double.parse(valor);
+                              vaquinha.atualizaValorTotalParticipantes();
                               txtValorDado.clear();
-                              vaquinha.listaParticipantes
-                                  .totalValorDadoPorParticipantes();
                             });
                           });
                         }),
@@ -226,8 +222,7 @@ class _GerenciarViewState extends State<GerenciarView> {
                 },
                 padding: const EdgeInsets.all(16),
                 separatorBuilder: (_, __) => const Divider(),
-                itemCount:
-                    vaquinha.listaParticipantes.quantidadeDeParticipantes()),
+                itemCount: vaquinha.qtdParticipantes),
           ),
           OutlinedButton(
             style: OutlinedButton.styleFrom(
