@@ -49,18 +49,6 @@ class _GerenciarViewState extends State<GerenciarView> {
               elevation: 5,
               child: Column(
                 children: [
-                  /*Container(
-                    alignment: const Alignment(0, 0),
-                    width: 380,
-                    height: 36,
-                    color: Colors.teal[200],
-                    child: Text(
-                      vaquinha.titulo,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 22),
-                    ),
-                  )*/
-
                   SizedBox(
                     width: double.infinity,
                     child: Container(

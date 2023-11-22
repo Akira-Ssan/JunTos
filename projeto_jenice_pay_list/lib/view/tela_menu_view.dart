@@ -24,22 +24,6 @@ class _TelaMenuState extends State<TelaMenu> {
 
   @override
   Widget build(BuildContext context) {
-    /*
-    var nomeof = FutureBuilder<String>(
-                future: LoginController().usuarioLogado(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    return Text(
-                      snapshot.data.toString(),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.amber),
-                    );
-                  }
-                  return const Text('');
-                },
-              );
-      */
-
     return Scaffold(
       appBar: AppBar(title: const Text('Juntos app de vaquinha')),
       drawer: Drawer(

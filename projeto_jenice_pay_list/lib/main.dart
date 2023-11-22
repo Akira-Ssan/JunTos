@@ -24,6 +24,8 @@ Future<void> main() async {
   );
 
   runApp(
+    //importante usar o Samsung Galaxy Note 20
+    //para evitar problemas na tela
     DevicePreview(
       enabled: true,
       builder: (context) => MaterialApp(
