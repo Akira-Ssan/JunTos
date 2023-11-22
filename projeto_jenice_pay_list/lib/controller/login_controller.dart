@@ -27,7 +27,8 @@ class LoginController {
       );
 
       sucesso(context, 'Usuário criado com sucesso.');
-      Navigator.pop(context);
+      var args = [email, senha];
+      Navigator.popAndPushNamed(context, 'LoginView', arguments: args);
     }).catchError((e) {
       switch (e.code) {
         case 'email-already-in-use':

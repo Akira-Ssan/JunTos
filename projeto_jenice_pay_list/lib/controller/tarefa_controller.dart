@@ -16,7 +16,7 @@ class TarefaController {
         .then((value) => sucesso(context, 'Tarefa adicionada com sucesso'))
         .catchError(
             (e) => erro(context, 'Não foi possível adicionar a tarefa.'))
-        .whenComplete(() => Navigator.pop(context));
+        .whenComplete(() => Navigator.popAndPushNamed(context, 'TelaMenu'));
   }
 
   //
@@ -30,7 +30,7 @@ class TarefaController {
         .then((value) => sucesso(context, 'Tarefa atualizada com sucesso'))
         .catchError(
             (e) => erro(context, 'Não foi possível atualizar a tarefa.'))
-        .whenComplete(() => Navigator.pop(context));
+        .whenComplete(() => Navigator.popAndPushNamed(context, 'TelaMenu'));
   }
 
   //

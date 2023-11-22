@@ -18,45 +18,22 @@ class _LoginViewState extends State<LoginView> {
   void initState() {
     super.initState();
   }
-  /*void exibirAlerta(context) {
-    showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-              title: Text("ERRO!"),
-              content: Text("Use apenas números!"),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    //Navigator.pushNamed(context, 'Inicio');
-                    Navigator.of(ctx).pop();
-                  },
-                  child: Container(
-                    color: Color.fromARGB(255, 0, 182, 88),
-                    padding: const EdgeInsets.all(14),
-                    child: Text(
-                      "OK",
-                      style: TextStyle(
-                          color: const Color.fromARGB(255, 255, 255, 255)),
-                    ),
-                  ),
-                )
-              ],
-            ));
-  }
-
-  
-  void exibirResultado(context, res) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(res),
-        duration: Duration(seconds: 2),
-      ),
-    );
-  }
-  */
 
   @override
   Widget build(BuildContext context) {
+    //Preenche o campo email e senha
+    //depois de cadastrar
+    var argsDaRota = ModalRoute.of(context);
+
+    if (argsDaRota != null && argsDaRota.settings.arguments != null) {
+      var argsLista = argsDaRota.settings.arguments as List;
+      var email = argsLista[0] as String;
+      var senha = argsLista[1] as String;
+
+      txtEmail.text = email;
+      txtPassw.text = senha;
+      //
+    }
     return Scaffold(
       /*appBar: AppBar(
         title: Text('Login'),
