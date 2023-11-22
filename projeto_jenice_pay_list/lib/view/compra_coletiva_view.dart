@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:projeto_jenice_pay_list/controller/login_controller.dart';
+import '../controller/tarefa_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto_jenice_pay_list/model/participante_model.dart';
+import '../model/participante_model.dart';
 
 class CompraColetiva extends StatefulWidget {
   const CompraColetiva({super.key});
@@ -16,44 +18,35 @@ class _CompraColetivaState extends State<CompraColetiva> {
   var txtNomePaticipante = TextEditingController();
   var txtMudaNome = TextEditingController();
   var lista = ListaParticipantes();
-  String tituloPrincipal = "Criar Vaquinha";
+  String tituloPrincipal = "Criar vaquinha";
+  dynamic docID;
 
   @override
   void initState() {
-    //lista.adicionarParticipante('Jenice', 0.0);
-    //lista.adicionarParticipante('Plotze', 0.0);
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    //
-    //Recuperando os dados da vaquinha para Editar/Criar
+//
+    //Recuperando os dados da vaquinha para Editar
     //
     var rotaAtual = ModalRoute.of(context);
-    //Antes verificando se é uma vaquinha nova ou editar
+
+    //Verificando se foi passado uma vaquinha como argumento junto com seu id
     if (rotaAtual != null && rotaAtual.settings.arguments != null) {
-      var vaquinha = rotaAtual.settings.arguments as Vaquinha;
+      //preenchendo as variáveis para edição da vaquinha
+      var argsList = rotaAtual.settings.arguments as List<dynamic>;
+      var vaquinha = argsList[0] as Vaquinha;
+      docID = argsList[1];
       txtTitulo.text = vaquinha.titulo;
       txtDescricao.text = vaquinha.descricao;
       txtValor.text = vaquinha.valor.toStringAsFixed(2);
       lista = vaquinha.listaParticipantes;
-      tituloPrincipal = "Editar Vaquinha";
+      tituloPrincipal = "Editar vaquinha";
     }
 
     return Scaffold(
-      /*appBar: AppBar(
-        leading: IconButton(
-          //tooltip: 'Voltar ao menu',
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.popAndPushNamed(context, 'TelaMenu');
-          },
-        ),
-        title: const Text('Nova vaquinha'),
-      ),*/
-
       body: Padding(
         padding: const EdgeInsets.fromLTRB(15, 50, 15, 50),
         child: Column(
@@ -178,9 +171,8 @@ class _CompraColetivaState extends State<CompraColetiva> {
                               //
                               //Botão remover participante
                               //
-
                               setState(() {
-                                lista.participantes.removeAt(index);
+                                lista.removerParticipante(index);
                                 //
                               });
                             },
@@ -225,12 +217,18 @@ class _CompraColetivaState extends State<CompraColetiva> {
                                     ),
                                     actionsPadding: const EdgeInsets.all(20),
                                     actions: [
+                                      //
+                                      //Botão cancelar a mudança de nome
+                                      //
                                       TextButton(
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },
                                         child: const Text('Cancelar'),
                                       ),
+                                      //
+                                      //Botão salvar a mudança de nome
+                                      //
                                       ElevatedButton(
                                         onPressed: () {
                                           if (txtMudaNome.text.isEmpty) {
@@ -278,9 +276,6 @@ class _CompraColetivaState extends State<CompraColetiva> {
                   ),
                   child: const Text('Voltar'),
                   onPressed: () {
-                    //
-                    //Ação ao pressionar o botão +
-                    //
                     Navigator.popAndPushNamed(context, 'TelaMenu');
                   },
                 ),
@@ -299,7 +294,35 @@ class _CompraColetivaState extends State<CompraColetiva> {
                     //
                     //Ação para salvar a vaquinha no banco de dados
                     //
-                    Navigator.pushNamed(context, 'TelaMenu');
+
+                    var v = Vaquinha(
+                        LoginController().idUsuario(),
+                        txtTitulo.text,
+                        txtDescricao.text,
+                        double.parse(txtValor.text),
+                        lista.quantidadeDeParticipantes(),
+                        lista.totalValorDadoPorParticipantes(),
+                        participantes: lista.participantes);
+                    //
+                    //limpando os controladores de texto
+                    //
+                    txtTitulo.clear();
+                    txtDescricao.clear();
+                    txtValor.clear();
+                    //
+                    //Direcionando o modo de salvar a vaquinha
+                    //
+                    if (docID == null) {
+                      //
+                      // Adicionar vaquinha
+                      //
+                      TarefaController().adicionar(context, v);
+                    } else {
+                      //
+                      // Atualizar vaquinha
+                      //
+                      TarefaController().atualizar(context, docID, v);
+                    }
                   },
                 ),
               ],

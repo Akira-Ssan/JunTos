@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_jenice_pay_list/model/participante_model.dart';
-import '../repository/teste.dart';
+
+import '../controller/login_controller.dart';
+import '../controller/tarefa_controller.dart';
+//import '../repository/teste.dart';
 
 //import 'package:projeto_jenice_pay_list/view/custom_widgets_view/user_card2.dart';
 
@@ -17,15 +20,17 @@ class _GerenciarViewState extends State<GerenciarView> {
   @override
   void initState() {
     super.initState();
+    //
+    //Recuperando os dados da vaquinha enviado
+    //
   }
 
   @override
   Widget build(BuildContext context) {
-    //
-    //Recuperando os dados da vaquinha enviado
-    //
-    var vaquinha = ModalRoute.of(context)!.settings.arguments as Vaquinha;
-    //
+    var argsv = ModalRoute.of(context)!.settings.arguments as List;
+    var vaquinha = argsv[0];
+    dynamic docID = argsv[1];
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -79,8 +84,8 @@ class _GerenciarViewState extends State<GerenciarView> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                     child: Text(
-                      'R\$ ${vaquinha.totalValorDadoPorParticipantes().toStringAsFixed(2)} '
-                      '(${(vaquinha.totalValorDadoPorParticipantes() / vaquinha.valor * 100).toStringAsFixed(2)}%)',
+                      'R\$ ${vaquinha.listaParticipantes.totalValorDadoPorParticipantes().toStringAsFixed(2)} '
+                      '(${(vaquinha.listaParticipantes.totalValorDadoPorParticipantes() / vaquinha.valor * 100).toStringAsFixed(2)}%)',
                       style: const TextStyle(
                           fontSize: 22,
                           color: Colors.green,
@@ -112,15 +117,16 @@ class _GerenciarViewState extends State<GerenciarView> {
                             const Text('Restam'),
                             const Divider(),
                             Text(
-                                'R\$ ${(vaquinha.valor - vaquinha.totalValorDadoPorParticipantes()).toStringAsFixed(2)}')
+                                'R\$ ${(vaquinha.valor - vaquinha.listaParticipantes.totalValorDadoPorParticipantes()).toStringAsFixed(2)}')
                           ],
                         ),
                         Column(
                           children: [
                             const Text('Participantes'),
                             const Divider(),
-                            Text(
-                                vaquinha.quantidadeDeParticipantes().toString())
+                            Text(vaquinha.listaParticipantes
+                                .quantidadeDeParticipantes()
+                                .toString())
                           ],
                         ),
                         Column(
@@ -128,7 +134,7 @@ class _GerenciarViewState extends State<GerenciarView> {
                             const Text('Cota por pessoa'),
                             const Divider(),
                             Text(
-                                'R\$ ${(vaquinha.valor / vaquinha.quantidadeDeParticipantes()).toStringAsFixed(2)}')
+                                'R\$ ${(vaquinha.valor / vaquinha.listaParticipantes.quantidadeDeParticipantes()).toStringAsFixed(2)}')
                           ],
                         ),
                       ],
@@ -204,7 +210,8 @@ class _GerenciarViewState extends State<GerenciarView> {
                               vaquinha.listaParticipantes.participantes[index]
                                   .valorDado += double.parse(valor);
                               txtValorDado.clear();
-                              vaquinha.totalValorDadoPorParticipantes();
+                              vaquinha.listaParticipantes
+                                  .totalValorDadoPorParticipantes();
                             });
                           });
                         }),
@@ -219,7 +226,24 @@ class _GerenciarViewState extends State<GerenciarView> {
                 },
                 padding: const EdgeInsets.all(16),
                 separatorBuilder: (_, __) => const Divider(),
-                itemCount: vaquinha.listaParticipantes.participantes.length),
+                itemCount:
+                    vaquinha.listaParticipantes.quantidadeDeParticipantes()),
+          ),
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              minimumSize: const Size(45, 45),
+              textStyle: const TextStyle(
+                fontSize: 14,
+              ),
+            ),
+            child: const Text('Salvar'),
+            onPressed: () {
+              //
+              //Ação para atualizar a vaquinha depois de gereciar
+              //
+
+              TarefaController().atualizar(context, docID, vaquinha);
+            },
           ),
         ]),
       ),

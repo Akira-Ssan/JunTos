@@ -29,7 +29,7 @@ class Membros1 {
 
 Vaquinha vaquis = Vaquinha(
     'AuWid',
-    'Comprar Rasperry Pi 5',
+    'Comprar Raspberry Pi 5',
     'Vaquinha para comprar o Raspberry Pi5 para presentear o professor Tanaka.',
     999.0,
     null,
@@ -40,8 +40,8 @@ class ListaVaquis {
   List<Vaquinha> listaVaquinhas = [
     Vaquinha(
         'AuWid',
-        'Comprar Galinho do Flutter',
-        'Vaquinha para comprar o mascote de pelúcia do Flutter, presente para o Prof. Plotze',
+        'Comprar mascote do Flutter',
+        'Vaquinha para comprar Dash o mascote de pelúcia do Flutter, presente para o Prof. Plotze',
         99.0,
         null,
         null,
