@@ -37,8 +37,8 @@ class _CompraColetivaState extends State<CompraColetiva> {
     'Testa de Léo',
     'Curva de Plotze',
     'Ângelo Marcari',
-    'Luis F. N. Barcheschi'
-        'Akira-Ssan'
+    'Luis F. N. Barcheschi',
+    'Akira-Ssan'
   ];
 
   @override
