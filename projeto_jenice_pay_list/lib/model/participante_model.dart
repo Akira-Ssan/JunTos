@@ -38,8 +38,6 @@ class ListaParticipantes {
   }
 }
 
-var t1 = ListaParticipantes();
-
 class Vaquinha {
   String uid;
   String titulo;
